@@ -19,10 +19,10 @@ public class Play {
     {
         Pane game = new Pane();
         
-        InputStream input = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\Image\\gameScreen.jpg"));
-        InputStream pause1 = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\Image\\pause1.png"));
-        InputStream pause2 = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\Image\\pause2.png"));
-        InputStream lifeline = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\Image\\LifeLine.png"));
+        InputStream input = Files.newInputStream(Paths.get("Image\\gameScreen.jpg"));
+        InputStream pause1 = Files.newInputStream(Paths.get("Image\\pause1.png"));
+        InputStream pause2 = Files.newInputStream(Paths.get("Image\\pause2.png"));
+        InputStream lifeline = Files.newInputStream(Paths.get("Image\\LifeLine.png"));
         
         Image BgImg = new Image(input);
         Image pause1Img = new Image(pause1);

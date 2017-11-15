@@ -26,13 +26,13 @@ public class Main extends Application {
         root = new Pane();
         root.setPrefSize(800, 600);
 
-        InputStream input = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\taptap\\welcomePageElement.jpg"));
-        InputStream play1 = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\taptap\\play1.png"));
-        InputStream play2 = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\taptap\\play2.png"));
-        InputStream howto1 = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\taptap\\howtoplay1.png"));
-        InputStream howto2 = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\taptap\\howtoplay2.png"));
-        InputStream exit1 = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\taptap\\exit1.png"));
-        InputStream exit2 = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\taptap\\exit2.png"));
+        InputStream input = Files.newInputStream(Paths.get("Image\\welcomePageElement.jpg"));
+        InputStream play1 = Files.newInputStream(Paths.get("Image\\play1.png"));
+        InputStream play2 = Files.newInputStream(Paths.get("Image\\play2.png"));
+        InputStream howto1 = Files.newInputStream(Paths.get("Image\\howtoplay1.png"));
+        InputStream howto2 = Files.newInputStream(Paths.get("Image\\howtoplay2.png"));
+        InputStream exit1 = Files.newInputStream(Paths.get("Image\\exit1.png"));
+        InputStream exit2 = Files.newInputStream(Paths.get("Image\\exit2.png"));
 
         Image ImgInput1 = new Image(input);
         Image ImgPlay1 = new Image(play1);

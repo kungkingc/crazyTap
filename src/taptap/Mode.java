@@ -25,15 +25,15 @@ public class Mode {
     public Pane selectMode() throws IOException{
         Pane p2 = new Pane();
         
-        InputStream input = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\Image\\Mode.jpg"));
-        InputStream advanced1 = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\Image\\advanced1.png"));
-        InputStream advanced2 = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\Image\\advanced2.png"));
-        InputStream intermediate1 = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\Image\\intermediate1.png"));
-        InputStream intermediate2 = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\Image\\intermediate2.png"));
-        InputStream beginner1 = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\Image\\beginner1.png"));
-        InputStream beginner2 = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\Image\\beginner2.png"));
-        InputStream back1 = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\Image\\back1.png"));
-        InputStream back2 = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\Image\\back2.png"));
+        InputStream input = Files.newInputStream(Paths.get("Image\\Mode.jpg"));
+        InputStream advanced1 = Files.newInputStream(Paths.get("Image\\advanced1.png"));
+        InputStream advanced2 = Files.newInputStream(Paths.get("Image\\advanced2.png"));
+        InputStream intermediate1 = Files.newInputStream(Paths.get("Image\\intermediate1.png"));
+        InputStream intermediate2 = Files.newInputStream(Paths.get("Image\\intermediate2.png"));
+        InputStream beginner1 = Files.newInputStream(Paths.get("Image\\beginner1.png"));
+        InputStream beginner2 = Files.newInputStream(Paths.get("Image\\beginner2.png"));
+        InputStream back1 = Files.newInputStream(Paths.get("Image\\back1.png"));
+        InputStream back2 = Files.newInputStream(Paths.get("Image\\back2.png"));
         
         
         Image BgImg = new Image(input);

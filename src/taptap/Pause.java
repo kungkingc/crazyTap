@@ -30,13 +30,13 @@ public class Pause {
         Button resumeB = new Button("resume");
         Button exitB = new Button("exit");
         
-        InputStream bgInput = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\Image\\pauseBG.png"));
-        InputStream restart1 = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\Image\\restart1.png"));
-        InputStream restart2 = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\Image\\restart2.png"));
-        InputStream continue1 = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\Image\\continue1.png"));
-        InputStream continue2 = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\Image\\continue2.png"));
-        InputStream library1 = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\Image\\musicLibrary1.png"));
-        InputStream library2 = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\Image\\musicLibrary2.png"));
+        InputStream bgInput = Files.newInputStream(Paths.get("Image\\pauseBG.png"));
+        InputStream restart1 = Files.newInputStream(Paths.get("Image\\restart1.png"));
+        InputStream restart2 = Files.newInputStream(Paths.get("Image\\restart2.png"));
+        InputStream continue1 = Files.newInputStream(Paths.get("Image\\continue1.png"));
+        InputStream continue2 = Files.newInputStream(Paths.get("Image\\continue2.png"));
+        InputStream library1 = Files.newInputStream(Paths.get("Image\\musicLibrary1.png"));
+        InputStream library2 = Files.newInputStream(Paths.get("Image\\musicLibrary2.png"));
         
         Image BgImg = new Image(bgInput);
         Image restart1Img = new Image(restart1);

@@ -28,19 +28,19 @@ public class SongLibrary {
         Pane game = new Pane();
         Button b = new Button("go back");
         
-        
-        InputStream Closer = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\Image\\Closer.jpg"));
-        InputStream Roses = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\Image\\Roses.jpg"));
-        InputStream Summer = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\Image\\Summer.jpg"));
-        InputStream ThisIs = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\Image\\ThisIsWhatYouCameFor.jpg"));
-        InputStream left1 = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\Image\\left2.png"));
-        InputStream left2 = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\Image\\left1.png"));
-        InputStream right1 = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\Image\\right2.png"));
-        InputStream right2 = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\Image\\right1.png"));
-        InputStream select1 = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\Image\\select1.png"));
-        InputStream select2 = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\Image\\select2.png"));
-        InputStream mainmenu1 = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\Image\\mainmenu1.png"));
-        InputStream mainmenu2 = Files.newInputStream(Paths.get("C:\\Users\\Mac\\Documents\\java\\TapTap\\src\\Image\\mainmenu2.png"));
+        //this is for test 
+        InputStream Closer = Files.newInputStream(Paths.get("Image\\Closer.jpg"));
+        InputStream Roses = Files.newInputStream(Paths.get("Image\\Roses.jpg"));
+        InputStream Summer = Files.newInputStream(Paths.get("Image\\Summer.jpg"));
+        InputStream ThisIs = Files.newInputStream(Paths.get("Image\\ThisIsWhatYouCameFor.jpg"));
+        InputStream left1 = Files.newInputStream(Paths.get("Image\\left2.png"));
+        InputStream left2 = Files.newInputStream(Paths.get("Image\\left1.png"));
+        InputStream right1 = Files.newInputStream(Paths.get("Image\\right2.png"));
+        InputStream right2 = Files.newInputStream(Paths.get("Image\\right1.png"));
+        InputStream select1 = Files.newInputStream(Paths.get("Image\\select1.png"));
+        InputStream select2 = Files.newInputStream(Paths.get("Image\\select2.png"));
+        InputStream mainmenu1 = Files.newInputStream(Paths.get("Image\\mainmenu1.png"));
+        InputStream mainmenu2 = Files.newInputStream(Paths.get("Image\\mainmenu2.png"));
         
         
         Image ImgCloser = new Image(Closer);
@@ -56,11 +56,14 @@ public class SongLibrary {
         Image Imgmain1 = new Image(mainmenu1);
         Image Imgmain2 = new Image(mainmenu2);
         
+        
         ImageView bg = new ImageView(ImgCloser);
         ImageView left = new ImageView(ImgLeft1);
         ImageView right = new ImageView(ImgRight1);
         ImageView select = new ImageView(ImgSelect1);
         ImageView mainmenu = new ImageView(Imgmain1);
+        
+        
         
         left.setX(50);
         left.setY(345);
