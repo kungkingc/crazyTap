@@ -8,6 +8,7 @@ package taptap;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import static taptap.Main.currentPath;
 
 
 /**
@@ -26,21 +28,32 @@ public class SongLibrary {
     public Pane getSong() throws IOException 
     {
         Pane game = new Pane();
-        Button b = new Button("go back");
+        Path closerPath = Paths.get(currentPath.toString(), "Image", "Closer.jpg");
+        Path rosesPath = Paths.get(currentPath.toString(), "Image", "Roses.jpg");
+        Path summerPath = Paths.get(currentPath.toString(), "Image", "Summer.jpg");
+        Path thisIsPath = Paths.get(currentPath.toString(), "Image", "ThisIsWhatYouCameFor.jpg");
+        Path left1Path = Paths.get(currentPath.toString(), "Image", "left2.png");
+        Path left2Path = Paths.get(currentPath.toString(), "Image", "left1.png");
+        Path right1Path = Paths.get(currentPath.toString(), "Image", "right2.png");
+        Path right2Path = Paths.get(currentPath.toString(), "Image", "right1.png");
+        Path select1Path = Paths.get(currentPath.toString(), "Image", "select1.png");
+        Path select2Path = Paths.get(currentPath.toString(), "Image", "select2.png");
+        Path mainmenu1Path = Paths.get(currentPath.toString(), "Image", "mainmenu1.png");
+        Path mainmenu2Path = Paths.get(currentPath.toString(), "Image", "mainmenu2.png");
         
         //this is for test 
-        InputStream Closer = Files.newInputStream(Paths.get("Image\\Closer.jpg"));
-        InputStream Roses = Files.newInputStream(Paths.get("Image\\Roses.jpg"));
-        InputStream Summer = Files.newInputStream(Paths.get("Image\\Summer.jpg"));
-        InputStream ThisIs = Files.newInputStream(Paths.get("Image\\ThisIsWhatYouCameFor.jpg"));
-        InputStream left1 = Files.newInputStream(Paths.get("Image\\left2.png"));
-        InputStream left2 = Files.newInputStream(Paths.get("Image\\left1.png"));
-        InputStream right1 = Files.newInputStream(Paths.get("Image\\right2.png"));
-        InputStream right2 = Files.newInputStream(Paths.get("Image\\right1.png"));
-        InputStream select1 = Files.newInputStream(Paths.get("Image\\select1.png"));
-        InputStream select2 = Files.newInputStream(Paths.get("Image\\select2.png"));
-        InputStream mainmenu1 = Files.newInputStream(Paths.get("Image\\mainmenu1.png"));
-        InputStream mainmenu2 = Files.newInputStream(Paths.get("Image\\mainmenu2.png"));
+        InputStream Closer = Files.newInputStream(Paths.get(closerPath.toString()));
+        InputStream Roses = Files.newInputStream(Paths.get(rosesPath.toString()));
+        InputStream Summer = Files.newInputStream(Paths.get(summerPath.toString()));
+        InputStream ThisIs = Files.newInputStream(Paths.get(thisIsPath.toString()));
+        InputStream left1 = Files.newInputStream(Paths.get(left1Path.toString()));
+        InputStream left2 = Files.newInputStream(Paths.get(left2Path.toString()));
+        InputStream right1 = Files.newInputStream(Paths.get(right1Path.toString()));
+        InputStream right2 = Files.newInputStream(Paths.get(right2Path.toString()));
+        InputStream select1 = Files.newInputStream(Paths.get(select1Path.toString()));
+        InputStream select2 = Files.newInputStream(Paths.get(select2Path.toString()));
+        InputStream mainmenu1 = Files.newInputStream(Paths.get(mainmenu1Path.toString()));
+        InputStream mainmenu2 = Files.newInputStream(Paths.get(mainmenu2Path.toString()));
         
         
         Image ImgCloser = new Image(Closer);
@@ -117,7 +130,7 @@ public class SongLibrary {
         });
         
         
-        game.getChildren().addAll(b,bg,left,right,select,mainmenu);
+        game.getChildren().addAll(bg,left,right,select,mainmenu);
         
         return game;
     }

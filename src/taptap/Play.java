@@ -3,6 +3,7 @@ package taptap;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,17 +13,22 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import static taptap.Main.scene2;
-
+import static taptap.Main.currentPath;
 
 public class Play {
     public Pane gameApp() throws IOException 
     {
         Pane game = new Pane();
+        Path gameScreenPath = Paths.get(currentPath.toString(), "Image", "gameScreen.jpg");
+        Path pause1Path = Paths.get(currentPath.toString(), "Image", "pause1.png");
+        Path pause2Path = Paths.get(currentPath.toString(), "Image", "pause2.png");
+        Path lifelinePath = Paths.get(currentPath.toString(), "Image", "LifeLine.png");
         
-        InputStream input = Files.newInputStream(Paths.get("Image\\gameScreen.jpg"));
-        InputStream pause1 = Files.newInputStream(Paths.get("Image\\pause1.png"));
-        InputStream pause2 = Files.newInputStream(Paths.get("Image\\pause2.png"));
-        InputStream lifeline = Files.newInputStream(Paths.get("Image\\LifeLine.png"));
+      
+        InputStream input = Files.newInputStream(Paths.get(gameScreenPath.toString()));
+        InputStream pause1 = Files.newInputStream(Paths.get(pause1Path.toString()));
+        InputStream pause2 = Files.newInputStream(Paths.get(pause2Path.toString()));
+        InputStream lifeline = Files.newInputStream(Paths.get(lifelinePath.toString()));
         
         Image BgImg = new Image(input);
         Image pause1Img = new Image(pause1);

@@ -3,6 +3,7 @@ package taptap;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,18 +22,31 @@ public class Main extends Application {
     static Scene scene1, scene2,scene3,scene4,scene5, gameScene;  
     //scene1 = main,scene2 = howto,scene3 = songLibrary, scene4 = mode , scene5 = pause
     static Stage primaryStage;
-
+    
+    static Path currentPath = Paths.get(System.getProperty("user.dir"));
+    
+    Path welcomePagePath = Paths.get(currentPath.toString(), "Image", "welcomePageElement.jpg");
+    Path play1Path = Paths.get(currentPath.toString(), "Image", "play1.png");
+    Path play2Path = Paths.get(currentPath.toString(), "Image", "play2.png");
+    Path howto1Path = Paths.get(currentPath.toString(), "Image", "howtoplay1.png");
+    Path howto2Path = Paths.get(currentPath.toString(), "Image", "howtoplay2.png");
+    Path exit1Path = Paths.get(currentPath.toString(), "Image", "exit1.png");
+    Path exit2Path = Paths.get(currentPath.toString(), "Image", "exit2.png");
+    
     public Parent createContent() throws IOException {
         root = new Pane();
         root.setPrefSize(800, 600);
-
-        InputStream input = Files.newInputStream(Paths.get("Image\\welcomePageElement.jpg"));
-        InputStream play1 = Files.newInputStream(Paths.get("Image\\play1.png"));
-        InputStream play2 = Files.newInputStream(Paths.get("Image\\play2.png"));
-        InputStream howto1 = Files.newInputStream(Paths.get("Image\\howtoplay1.png"));
-        InputStream howto2 = Files.newInputStream(Paths.get("Image\\howtoplay2.png"));
-        InputStream exit1 = Files.newInputStream(Paths.get("Image\\exit1.png"));
-        InputStream exit2 = Files.newInputStream(Paths.get("Image\\exit2.png"));
+        
+        System.out.println(currentPath.toString());
+        
+   
+        InputStream input = Files.newInputStream(Paths.get(welcomePagePath.toString()));
+        InputStream play1 = Files.newInputStream(Paths.get(play1Path.toString()));
+        InputStream play2 = Files.newInputStream(Paths.get(play2Path.toString()));
+        InputStream howto1 = Files.newInputStream(Paths.get(howto1Path.toString()));
+        InputStream howto2 = Files.newInputStream(Paths.get(howto2Path.toString()));
+        InputStream exit1 = Files.newInputStream(Paths.get(exit1Path.toString()));
+        InputStream exit2 = Files.newInputStream(Paths.get(exit2Path.toString()));
 
         Image ImgInput1 = new Image(input);
         Image ImgPlay1 = new Image(play1);
