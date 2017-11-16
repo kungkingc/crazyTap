@@ -8,6 +8,7 @@ package taptap;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,6 +18,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import static taptap.Main.scene2;
+import static taptap.Main.currentPath;
 
 /**
  *
@@ -26,17 +28,24 @@ public class Pause {
     public Pane getPause() throws IOException 
     {
         Pane game = new Pane();
-        Button restartB = new Button("restart");
-        Button resumeB = new Button("resume");
-        Button exitB = new Button("exit");
         
-        InputStream bgInput = Files.newInputStream(Paths.get("Image\\pauseBG.png"));
-        InputStream restart1 = Files.newInputStream(Paths.get("Image\\restart1.png"));
-        InputStream restart2 = Files.newInputStream(Paths.get("Image\\restart2.png"));
-        InputStream continue1 = Files.newInputStream(Paths.get("Image\\continue1.png"));
-        InputStream continue2 = Files.newInputStream(Paths.get("Image\\continue2.png"));
-        InputStream library1 = Files.newInputStream(Paths.get("Image\\musicLibrary1.png"));
-        InputStream library2 = Files.newInputStream(Paths.get("Image\\musicLibrary2.png"));
+        Path pauseBGPath = Paths.get(currentPath.toString(), "Image", "pauseBG.png");
+        Path restart1Path = Paths.get(currentPath.toString(), "Image", "restart1.png");
+        Path restart2Path = Paths.get(currentPath.toString(), "Image", "restart2.png");
+        Path continue1Path = Paths.get(currentPath.toString(), "Image", "continue1.png");
+        Path continue2Path = Paths.get(currentPath.toString(), "Image", "continue2.png");
+        Path library1Path = Paths.get(currentPath.toString(), "Image", "musicLibrary1.png");
+        Path library2Path = Paths.get(currentPath.toString(), "Image", "musicLibrary2.png");
+        
+        
+        
+        InputStream bgInput = Files.newInputStream(Paths.get(pauseBGPath.toString()));
+        InputStream restart1 = Files.newInputStream(Paths.get(restart1Path.toString()));
+        InputStream restart2 = Files.newInputStream(Paths.get(restart2Path.toString()));
+        InputStream continue1 = Files.newInputStream(Paths.get(continue1Path.toString()));
+        InputStream continue2 = Files.newInputStream(Paths.get(continue2Path.toString()));
+        InputStream library1 = Files.newInputStream(Paths.get(library1Path.toString()));
+        InputStream library2 = Files.newInputStream(Paths.get(library2Path.toString()));
         
         Image BgImg = new Image(bgInput);
         Image restart1Img = new Image(restart1);

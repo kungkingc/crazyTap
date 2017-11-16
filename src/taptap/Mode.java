@@ -8,6 +8,7 @@ package taptap;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import static taptap.Main.currentPath;
 
 /**
  *
@@ -25,15 +27,25 @@ public class Mode {
     public Pane selectMode() throws IOException{
         Pane p2 = new Pane();
         
-        InputStream input = Files.newInputStream(Paths.get("Image\\Mode.jpg"));
-        InputStream advanced1 = Files.newInputStream(Paths.get("Image\\advanced1.png"));
-        InputStream advanced2 = Files.newInputStream(Paths.get("Image\\advanced2.png"));
-        InputStream intermediate1 = Files.newInputStream(Paths.get("Image\\intermediate1.png"));
-        InputStream intermediate2 = Files.newInputStream(Paths.get("Image\\intermediate2.png"));
-        InputStream beginner1 = Files.newInputStream(Paths.get("Image\\beginner1.png"));
-        InputStream beginner2 = Files.newInputStream(Paths.get("Image\\beginner2.png"));
-        InputStream back1 = Files.newInputStream(Paths.get("Image\\back1.png"));
-        InputStream back2 = Files.newInputStream(Paths.get("Image\\back2.png"));
+        Path modePagePath = Paths.get(currentPath.toString(), "Image", "Mode.jpg");
+        Path advanced1Path = Paths.get(currentPath.toString(), "Image", "advanced1.png");
+        Path advanced2Path = Paths.get(currentPath.toString(), "Image", "advanced2.png");
+        Path intermediate1Path = Paths.get(currentPath.toString(), "Image", "intermediate1.png");
+        Path intermediate2Path = Paths.get(currentPath.toString(), "Image", "intermediate2.png");
+        Path beginner1Path = Paths.get(currentPath.toString(), "Image", "beginner1.png");
+        Path beginner2Path = Paths.get(currentPath.toString(), "Image", "beginner2.png");
+        Path back1Path = Paths.get(currentPath.toString(), "Image", "back1.png");
+        Path back2Path = Paths.get(currentPath.toString(), "Image", "back2.png");
+        
+        InputStream input = Files.newInputStream(Paths.get(modePagePath.toString()));
+        InputStream advanced1 = Files.newInputStream(Paths.get(advanced1Path.toString()));
+        InputStream advanced2 = Files.newInputStream(Paths.get(advanced2Path.toString()));
+        InputStream intermediate1 = Files.newInputStream(Paths.get(intermediate1Path.toString()));
+        InputStream intermediate2 = Files.newInputStream(Paths.get(intermediate2Path.toString()));
+        InputStream beginner1 = Files.newInputStream(Paths.get(beginner1Path.toString()));
+        InputStream beginner2 = Files.newInputStream(Paths.get(beginner2Path.toString()));
+        InputStream back1 = Files.newInputStream(Paths.get(back1Path.toString()));
+        InputStream back2 = Files.newInputStream(Paths.get(back2Path.toString()));
         
         
         Image BgImg = new Image(input);
