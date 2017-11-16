@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     static Pane root;
+    
     static Scene scene1, scene2,scene3,scene4,scene5, gameScene;  
     //scene1 = main,scene2 = howto,scene3 = songLibrary, scene4 = mode , scene5 = pause
     static Stage primaryStage;
@@ -38,9 +39,10 @@ public class Main extends Application {
     }
     
     public Parent createContent() throws IOException {
+        
         root = new Pane();
         root.setPrefSize(800, 600);
-        
+        root.setFocusTraversable(true);
         System.out.println(currentPath.toString());
         
    

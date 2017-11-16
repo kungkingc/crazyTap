@@ -10,15 +10,17 @@ import java.util.logging.Logger;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Box;
 import static taptap.Main.scene2;
 import static taptap.Main.currentPath;
 
-public class Play {
+public class Play implements EventHandler<KeyEvent> {
 
     Image Imgblue1;
     Image Imgblue2;
@@ -101,11 +103,10 @@ public class Play {
         ivpink.setY(490);
         ivpurple.setY(490);
 
-       
-        
-//        game.setOnKeyPressed(event -> {
-//
-//        });
+        game.setOnKeyPressed(event -> {
+            System.out.print("Ahhhhhh!!!");
+
+        });
 
         pause.setOnMouseExited(event -> pause.setImage(pause1Img));
         pause.setOnMouseEntered(event -> pause.setImage(pause2Img));
@@ -120,14 +121,43 @@ public class Play {
 
         });
 
-        game.getChildren().addAll(bg, pause, LifeLine, ivblue, ivgreen, ivpink, ivpurple);
+        final TextField textBox = new TextField();
+        textBox.setPromptText("Write here");
 
+        textBox.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            public void handle(KeyEvent ke) {
+                if(ke.getText().equals("d")) ivblue.setImage(Imgblue2);
+                else if(ke.getText().equals("f")) ivgreen.setImage(Imggreen2);
+                else if(ke.getText().equals("j")) ivpink.setImage(Imgpink2);
+                else if(ke.getText().equals("k")) ivpurple.setImage(Imgpurple2);
+                
+                System.out.println("Key Pressed: " + ke.getText());
+                
+            }
+        });
+
+        textBox.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            public void handle(KeyEvent ke) {
+                if(ke.getText().equals("d")) ivblue.setImage(Imgblue1);
+                else if(ke.getText().equals("f")) ivgreen.setImage(Imggreen1);
+                else if(ke.getText().equals("j")) ivpink.setImage(Imgpink1);
+                else if(ke.getText().equals("k")) ivpurple.setImage(Imgpurple1);
+                System.out.println("Key Released: " + ke.getText());
+                //ivblue.setImage(Imgblue1);
+            }
+        });
+
+        //Main.gameScene.setOnKeyPressed(event -> System.out.println("ahhhhh"));
+//        Main.gameScene.addEventFilter(KeyEvent.KEY_PRESSED,
+//                event -> System.out.println("Pressed: " + event.getCode()));
+        game.getChildren().addAll(textBox,bg, pause, LifeLine, ivblue, ivgreen, ivpink, ivpurple);
         return game;
     }
 
     public void handle(KeyEvent arg0) {
         if (arg0.getCode() == KeyCode.SPACE) {
-            ivblue.setImage(Imgblue2);
+            //ivblue.setImage(Imgblue2);
+
         }
     }
 }
