@@ -34,6 +34,8 @@ public class Main extends Application {
     Path exit1Path = Paths.get(currentPath.toString(), "Image", "exit1.png");
     Path exit2Path = Paths.get(currentPath.toString(), "Image", "exit2.png");
     
+    
+    
     public static Scene getGameScene(){
         return gameScene;
     }
@@ -55,6 +57,7 @@ public class Main extends Application {
         InputStream exit2 = Files.newInputStream(Paths.get(exit2Path.toString()));
         
         
+        
         Image ImgInput1 = new Image(input);
         Image ImgPlay1 = new Image(play1);
         Image ImgPlay2 = new Image(play2);
@@ -63,11 +66,13 @@ public class Main extends Application {
         Image ImgExit1 = new Image(exit1);
         Image ImgExit2 = new Image(exit2);
         
+        
 
         ImageView iv1 = new ImageView(ImgInput1);
         ImageView ivPlay = new ImageView(ImgPlay1);
         ImageView ivHowto = new ImageView(ImgHowto1);
         ImageView ivExit = new ImageView(ImgExit1);
+       
         
         
 

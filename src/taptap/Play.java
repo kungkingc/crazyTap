@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.animation.TranslateTransition;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -17,6 +18,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Box;
+import javafx.util.Duration;
 import static taptap.Main.scene2;
 import static taptap.Main.currentPath;
 
@@ -38,7 +40,13 @@ public class Play implements EventHandler<KeyEvent> {
     ImageView ivgreen;
     ImageView ivpink;
     ImageView ivpurple;
-
+    
+    ImageView blueball;
+    ImageView greenball;
+    ImageView pinkball;
+    ImageView purpleball;
+    
+    
     public Pane gameApp() throws IOException {
         Pane game = new Pane();
         Path gameScreenPath = Paths.get(currentPath.toString(), "Image", "basicBg.png");
@@ -53,7 +61,7 @@ public class Play implements EventHandler<KeyEvent> {
         Path pink2Path = Paths.get(currentPath.toString(), "Image", "pink2.png");
         Path purple1Path = Paths.get(currentPath.toString(), "Image", "purple1.png");
         Path purple2Path = Paths.get(currentPath.toString(), "Image", "purple2.png");
-
+        
         InputStream input = Files.newInputStream(Paths.get(gameScreenPath.toString()));
         InputStream pause1 = Files.newInputStream(Paths.get(pause1Path.toString()));
         InputStream pause2 = Files.newInputStream(Paths.get(pause2Path.toString()));
@@ -66,11 +74,15 @@ public class Play implements EventHandler<KeyEvent> {
         InputStream pink2 = Files.newInputStream(Paths.get(pink2Path.toString()));
         InputStream purple1 = Files.newInputStream(Paths.get(purple1Path.toString()));
         InputStream purple2 = Files.newInputStream(Paths.get(purple2Path.toString()));
-
+        
+        
         Image BgImg = new Image(input);
         Image pause1Img = new Image(pause1);
         Image pause2Img = new Image(pause2);
         Image LifeLineImg = new Image(lifeline);
+        
+        
+        
         Imgblue1 = new Image(blue1);
         Imgblue2 = new Image(blue2);
         Imggreen1 = new Image(green1);
@@ -79,7 +91,8 @@ public class Play implements EventHandler<KeyEvent> {
         Imgpink2 = new Image(pink2);
         Imgpurple1 = new Image(purple1);
         Imgpurple2 = new Image(purple2);
-
+       
+        
         bg = new ImageView(BgImg);
         pause = new ImageView(pause1Img);
         LifeLine = new ImageView(LifeLineImg);
@@ -87,7 +100,8 @@ public class Play implements EventHandler<KeyEvent> {
         ivgreen = new ImageView(Imggreen1);
         ivpink = new ImageView(Imgpink1);
         ivpurple = new ImageView(Imgpurple1);
-
+        
+        
         LifeLine.setX(53);
         LifeLine.setY(320);
 
@@ -102,11 +116,9 @@ public class Play implements EventHandler<KeyEvent> {
         ivgreen.setY(490);
         ivpink.setY(490);
         ivpurple.setY(490);
+        
 
-        game.setOnKeyPressed(event -> {
-            System.out.print("Ahhhhhh!!!");
-
-        });
+        
 
         pause.setOnMouseExited(event -> pause.setImage(pause1Img));
         pause.setOnMouseEntered(event -> pause.setImage(pause2Img));
@@ -131,7 +143,7 @@ public class Play implements EventHandler<KeyEvent> {
                 else if(ke.getText().equals("j")) ivpink.setImage(Imgpink2);
                 else if(ke.getText().equals("k")) ivpurple.setImage(Imgpurple2);
                 
-                System.out.println("Key Pressed: " + ke.getText());
+                //System.out.println("Key Pressed: " + ke.getText());
                 
             }
         });
@@ -142,15 +154,24 @@ public class Play implements EventHandler<KeyEvent> {
                 else if(ke.getText().equals("f")) ivgreen.setImage(Imggreen1);
                 else if(ke.getText().equals("j")) ivpink.setImage(Imgpink1);
                 else if(ke.getText().equals("k")) ivpurple.setImage(Imgpurple1);
-                System.out.println("Key Released: " + ke.getText());
-                //ivblue.setImage(Imgblue1);
+                //System.out.println("Key Released: " + ke.getText());
+                
             }
         });
 
+        
+        TranslateTransition tt = new TranslateTransition(Duration.millis(2000), ivbb);
+     tt.setByY(700);
+     tt.setCycleCount(4);
+     tt.setAutoReverse(true);
+ 
+     tt.play();
+     
+     
         //Main.gameScene.setOnKeyPressed(event -> System.out.println("ahhhhh"));
 //        Main.gameScene.addEventFilter(KeyEvent.KEY_PRESSED,
 //                event -> System.out.println("Pressed: " + event.getCode()));
-        game.getChildren().addAll(textBox,bg, pause, LifeLine, ivblue, ivgreen, ivpink, ivpurple);
+        game.getChildren().addAll(textBox,bg, pause, LifeLine, ivblue, ivgreen, ivpink, ivpurple,ivbb);
         return game;
     }
 
