@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.Scene;
@@ -77,11 +78,15 @@ public class Mode {
         beginner.setOnMouseEntered(event-> beginner.setImage(Beginner2Img));
         beginner.setOnMouseClicked(event -> {
             try {
-                Main.gameScene = new Scene(new Play().gameApp());
+                Main.gameScene = new Scene(new Play().gameApp(),800,600);
                 Main.primaryStage.setScene(Main.gameScene);
                 Main.primaryStage.show();
             } catch (IOException ex) {
                 Logger.getLogger(HowToPlay.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(Mode.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Mode.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         });
@@ -94,6 +99,10 @@ public class Mode {
                 Main.primaryStage.show();
             } catch (IOException ex) {
                 Logger.getLogger(HowToPlay.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(Mode.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Mode.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         });
@@ -106,6 +115,10 @@ public class Mode {
                 Main.primaryStage.show();
             } catch (IOException ex) {
                 Logger.getLogger(HowToPlay.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(Mode.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Mode.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         });
@@ -118,6 +131,10 @@ public class Mode {
                 Main.primaryStage.show();
             } catch (IOException ex) {
                 Logger.getLogger(HowToPlay.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(Mode.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Mode.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         });
