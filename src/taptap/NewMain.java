@@ -45,25 +45,16 @@ public class NewMain {
         for (time = 0; time < 17; time++) {
             if (arrayPos1.get(time) == 1) {
                 System.out.print("1");
-            } else {
-                System.out.print(" ");
             }
-            if (arrayPos2.get(time) == 1) {
+            else if (arrayPos2.get(time) == 1) {
                 System.out.print("1");
-            } else {
-                System.out.print(" ");
             }
-            if (arrayPos3.get(time) == 1) {
+            else if (arrayPos3.get(time) == 1) {
                 System.out.print("1");
-            } else {
-                System.out.print(" ");
-            }
-            if (arrayPos4.get(time) == 1) {
+            } 
+            else if (arrayPos4.get(time) == 1) {
                 System.out.print("1");
-            } else {
-                System.out.print(" ");
-            }
-            System.out.println();
+            } 
         }
 
     }

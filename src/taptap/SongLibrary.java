@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.Scene;
@@ -25,7 +26,7 @@ import static taptap.Main.currentPath;
  * @author Mac
  */
 public class SongLibrary {
-    public Pane getSong() throws IOException 
+    public Pane getSong() throws IOException, SQLException, ClassNotFoundException
     {
         Pane game = new Pane();
         Path closerPath = Paths.get(currentPath.toString(), "Image", "Closer.jpg");

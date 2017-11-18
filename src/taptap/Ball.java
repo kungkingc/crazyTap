@@ -19,7 +19,7 @@ import static taptap.Main.currentPath;
  * @author Mac
  */
 public class Ball {
-    
+    int lifeTime = 150;
     Path ball;
     InputStream b;
     Image Img;
