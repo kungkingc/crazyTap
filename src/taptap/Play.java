@@ -26,6 +26,9 @@ import static taptap.Main.scene2;
 import static taptap.Main.currentPath;
 import java.sql.*;
 import java.util.ArrayList;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.util.Duration;
 
 public class Play implements EventHandler<KeyEvent> {
 
@@ -57,9 +60,11 @@ public class Play implements EventHandler<KeyEvent> {
     private Statement stat1;
     private ResultSet rs;
     private int time;
-
+    private int songDuration;
+    
     public Pane gameApp() throws IOException, SQLException, ClassNotFoundException {
         boolean state = false;
+        
         Pane game = new Pane();
         Path gameScreenPath = Paths.get(currentPath.toString(), "Image", "basicBg.png");
         Path pause1Path = Paths.get(currentPath.toString(), "Image", "pause1.png");
@@ -147,6 +152,13 @@ public class Play implements EventHandler<KeyEvent> {
         //closer.play();
         MediaPlayer summer = new Song("Summer").getPlayer();
         summer.play();
+        summer.currentTimeProperty().addListener(new ChangeListener<Duration>() {
+            @Override
+            public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
+                
+            }
+        });
+        
 
         pause.setOnMouseExited(event -> pause.setImage(pause1Img));
         pause.setOnMouseEntered(event -> pause.setImage(pause2Img));
