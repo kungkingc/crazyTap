@@ -10,91 +10,70 @@ package taptap;
  * @author Macbook Pro
  */
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.application.Application;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
-import javafx.util.Duration;
+import java.sql.*;
+import java.util.ArrayList;
 
-public class FXTimer extends Application {
+public class NewMain {
 
-    private Timeline timeline;
-    private Label timerLabel = new Label();
-    private DoubleProperty timeSeconds = new SimpleDoubleProperty();
-    private Duration time = Duration.ZERO;
+    ArrayList<Integer> arrayPos1 = new ArrayList<Integer>();
+    ArrayList<Integer> arrayPos2 = new ArrayList<Integer>();
+    ArrayList<Integer> arrayPos3 = new ArrayList<Integer>();
+    ArrayList<Integer> arrayPos4 = new ArrayList<Integer>();
+    private Connection connect1;
+    private Statement stat1;
+    private ResultSet rs;
+    private int time;
 
-    @Override
-    public void start(Stage primaryStage) {
-        // Configure the Label
-        // Bind the timerLabel text property to the timeSeconds property
-        timerLabel.textProperty().bind(timeSeconds.asString());
-        timerLabel.setTextFill(Color.RED);
-        timerLabel.setStyle("-fx-font-size: 4em;");
+    public NewMain() throws SQLException, ClassNotFoundException {
+        connect1 = DriverManager.getConnection("jdbc:ucanaccess://C://Users//Macbook Pro//Documents/tapNodes.accdb");
+        stat1 = connect1.createStatement();
+        rs = stat1.executeQuery("select col1, col2, col3,col4 from book");
+        while (rs.next()) {
+            int pos1 = rs.getInt(1);
+            int pos2 = rs.getInt(2);
+            int pos3 = rs.getInt(3);
+            int pos4 = rs.getInt(4);
+            arrayPos1.add(pos1);
+            arrayPos2.add(pos2);
+            arrayPos3.add(pos3);
+            arrayPos4.add(pos4);
+        }
+    }
 
-        // Create and configure the Button
-        Button button = new Button();
-        button.setText("Start");
-        button.setOnAction(new EventHandler() {
-            @Override
-            public void handle(Event event) {
-                timeline = new Timeline(
-                        new KeyFrame(Duration.millis(100),
-                                new EventHandler<ActionEvent>() {
-                            @Override
-                            public void handle(ActionEvent t) {
-                                Duration duration = ((KeyFrame) t.getSource()).getTime();
-                                time = time.add(duration);
 
-                                timeSeconds.set(time.toSeconds());
-
-                            }
-                        })
-                );
-                timeline.setCycleCount(Timeline.INDEFINITE);
-                timeline.play();
+    public void checkDrop(ArrayList blue, ArrayList green, ArrayList pink, ArrayList purple) {
+        for (time = 0; time < 17; time++) {
+            if (arrayPos1.get(time) == 1) {
+                System.out.print("1");
+            } else {
+                System.out.print(" ");
             }
+            if (arrayPos2.get(time) == 1) {
+                System.out.print("1");
+            } else {
+                System.out.print(" ");
+            }
+            if (arrayPos3.get(time) == 1) {
+                System.out.print("1");
+            } else {
+                System.out.print(" ");
+            }
+            if (arrayPos4.get(time) == 1) {
+                System.out.print("1");
+            } else {
+                System.out.print(" ");
+            }
+            System.out.println();
+        }
 
-        });
-
-        // Setup the Stage and the Scene (the scene graph)
-        StackPane root = new StackPane();
-        Scene scene = new Scene(root, 300, 250);
-
-        // Create and configure VBox
-        // gap between components is 20
-        VBox vb = new VBox(20);
-        // center the components within VBox
-        vb.setAlignment(Pos.CENTER);
-        // Make it as wide as the application frame (scene)
-        vb.setPrefWidth(scene.getWidth());
-        // Move the VBox down a bit
-        vb.setLayoutY(30);
-        // Add the button and timerLabel to the VBox
-        vb.getChildren().addAll(button, timerLabel);
-        // Add the VBox to the root component
-        root.getChildren().add(vb);
-
-        primaryStage.setTitle("FX Timer");
-        primaryStage.setScene(scene);
-        primaryStage.show();
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        launch(args);
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        NewMain out = new NewMain();
+        // for (int i = 0; i < out.arrayPos4.size(); i++) {
+        //     System.out.println(out.arrayPos4.get(i));
+        // }
+        out.checkDrop(out.arrayPos1, out.arrayPos2, out.arrayPos3, out.arrayPos4);
     }
+
 }
