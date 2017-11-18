@@ -1,5 +1,6 @@
 package taptap;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -28,6 +29,8 @@ import java.util.ArrayList;
 
 public class Play implements EventHandler<KeyEvent> {
 
+    ArrayList<Ball> ballList = new ArrayList();
+
     Image Imgblue1;
     Image Imgblue2;
     Image Imggreen1;
@@ -45,10 +48,6 @@ public class Play implements EventHandler<KeyEvent> {
     ImageView ivpink;
     ImageView ivpurple;
 
-    ImageView blueball;
-    ImageView greenball;
-    ImageView pinkball;
-    ImageView purpleball;
 
     ArrayList<Integer> arrayPos1 = new ArrayList<Integer>();
     ArrayList<Integer> arrayPos2 = new ArrayList<Integer>();
@@ -93,6 +92,9 @@ public class Play implements EventHandler<KeyEvent> {
         Image pause2Img = new Image(pause2);
         Image LifeLineImg = new Image(lifeline);
 
+        ArrayList<Ball> ballList = new ArrayList();
+        ArrayList<TranslateTransition> transList = new ArrayList();
+
         Imgblue1 = new Image(blue1);
         Imgblue2 = new Image(blue2);
         Imggreen1 = new Image(green1);
@@ -125,23 +127,9 @@ public class Play implements EventHandler<KeyEvent> {
         ivpink.setY(490);
         ivpurple.setY(490);
 
-        //ball
-        blueball = new Ball("blue").getBall();
-        greenball = new Ball("green").getBall();
-        pinkball = new Ball("pink").getBall();
-        purpleball = new Ball("purple").getBall();
-
-        blueball.setX(195);
-        blueball.setY(-50);
-        greenball.setX(304);
-       // greenball.setY(-50);
-        pinkball.setX(411.5);
-       // pinkball.setY(-50);
-        purpleball.setX(516.5);
-        //purpleball.setY(-50);
-
+        
         // get location positions
-        connect1 = DriverManager.getConnection("jdbc:ucanaccess://C://Users//Macbook Pro//Documents/tapNodes.accdb");
+        connect1 = DriverManager.getConnection("jdbc:ucanaccess://C://Users//Mac//Desktop//crazyTap//tapNodes.accdb");
         stat1 = connect1.createStatement();
         rs = stat1.executeQuery("select col1, col2, col3,col4 from book");
         while (rs.next()) {
@@ -209,60 +197,67 @@ public class Play implements EventHandler<KeyEvent> {
             }
         });
 
-        TranslateTransition tt1 = new TranslateTransition(Duration.millis(2000), blueball);
-        tt1.setByY(600);
-        // tt1.setCycleCount(1);
-        //tt1.setAutoReverse(true);
-
-        // tt1.play();
-        TranslateTransition tt2 = new TranslateTransition(Duration.millis(2000), greenball);
-        tt2.setByY(600);
-        // tt2.setCycleCount(1);
-        //tt2.setAutoReverse(true);
-
-        // tt2.play();
-        TranslateTransition tt3 = new TranslateTransition(Duration.millis(2000), pinkball);
-        tt3.setByY(600);
-        // tt3.setCycleCount(1);
-        // tt3.setAutoReverse(true);
-
-        // tt3.play();
-        TranslateTransition tt4 = new TranslateTransition(Duration.millis(2000), purpleball);
-        tt4.setByY(600);
-        // tt4.setCycleCount(1);
-        // tt4.setAutoReverse(true);
-
-        // tt4.play();
         if (!state) {
             state = true;
             for (time = 0; time < 17; time++) {
                 if (arrayPos1.get(time) == 1) {
-                    tt1.play();
-                    System.out.print("1");
-                } else if (arrayPos2.get(time) == 1) {
-                    tt2.play();
-                    System.out.print("2");
-                } else if (arrayPos3.get(time) == 1) {
-                    tt3.play();
-                    System.out.print("3");
-                } else if (arrayPos4.get(time) == 1) {
-                    tt4.play();
+                    //tt1.play();
 
-                    System.out.print("4");
+                    Ball temp = new Ball("blue");
+                    ImageView iv = temp.getBall();
+                    TranslateTransition tt = new TranslateTransition(Duration.millis(2000), iv);
+                    tt.setByY(600);
+                    tt.setDelay(Duration.millis(time * 200));
+                    tt.play();
+
+                    transList.add(tt);
+                    ballList.add(temp);
+                    System.out.println("1");
+                } else if (arrayPos2.get(time) == 1) {
+                    Ball temp = new Ball("green");
+                    ImageView iv = temp.getBall();
+                    TranslateTransition tt = new TranslateTransition(Duration.millis(2000), iv);
+                    tt.setByY(600);
+                    tt.setDelay(Duration.millis(time * 200));
+                    tt.play();
+
+                    transList.add(tt);
+                    ballList.add(temp);
+                    System.out.println("2");
+                } else if (arrayPos3.get(time) == 1) {
+                    Ball temp = new Ball("pink");
+                    ImageView iv = temp.getBall();
+                    TranslateTransition tt = new TranslateTransition(Duration.millis(2000), iv);
+                    tt.setByY(600);
+                    tt.setDelay(Duration.millis(time * 200));
+                    tt.play();
+
+                    transList.add(tt);
+                    ballList.add(temp);
+                    System.out.println("3");
+                } else if (arrayPos4.get(time) == 1) {
+                    Ball temp = new Ball("purple");
+                    ImageView iv = temp.getBall();
+                    TranslateTransition tt = new TranslateTransition(Duration.millis(2000), iv);
+                    tt.setByY(600);
+                    tt.setDelay(Duration.millis(time * 200));
+                    tt.play();
+
+                    transList.add(tt);
+                    ballList.add(temp);
+                    System.out.println("4");
                 }
-//                try {
-//                    Thread.sleep(40);
-//                } catch (Exception e) {
-//                }
 
             }
 
         }
 
-        //Main.gameScene.setOnKeyPressed(event -> System.out.println("ahhhhh"));
-//        Main.gameScene.addEventFilter(KeyEvent.KEY_PRESSED,
-//                event -> System.out.println("Pressed: " + event.getCode()));
-        game.getChildren().addAll(textBox, bg, pause, LifeLine, ivblue, ivgreen, ivpink, ivpurple, blueball, greenball, pinkball, purpleball);
+        game.getChildren().addAll(textBox, bg, pause, LifeLine); 
+        for (int i = 0; i < ballList.size(); i++) {
+            game.getChildren().add(ballList.get(i).getBall());
+            System.out.println("getbb");
+        }
+        game.getChildren().addAll(ivblue, ivgreen, ivpink, ivpurple);
         return game;
     }
 

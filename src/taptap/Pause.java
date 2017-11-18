@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.Scene;
@@ -77,6 +78,10 @@ public class Pause {
                 Main.primaryStage.show();
             } catch (IOException ex) {
                 Logger.getLogger(Pause.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(Pause.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Pause.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         });
@@ -90,6 +95,10 @@ public class Pause {
                 Main.primaryStage.show();
             } catch (IOException ex) {
                 Logger.getLogger(Pause.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(Pause.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Pause.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         });
@@ -102,6 +111,10 @@ public class Pause {
                 Main.primaryStage.setScene(Main.scene3);
                 Main.primaryStage.show();
             } catch (IOException ex) {
+                Logger.getLogger(Pause.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(Pause.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
                 Logger.getLogger(Pause.class.getName()).log(Level.SEVERE, null, ex);
             }
             
