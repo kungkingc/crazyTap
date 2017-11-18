@@ -35,7 +35,6 @@ public class Main extends Application {
     Path exit2Path = Paths.get(currentPath.toString(), "Image", "exit2.png");
     
     
-    
     public static Scene getGameScene(){
         return gameScene;
     }
@@ -66,7 +65,7 @@ public class Main extends Application {
         Image ImgExit1 = new Image(exit1);
         Image ImgExit2 = new Image(exit2);
         
-        
+
 
         ImageView iv1 = new ImageView(ImgInput1);
         ImageView ivPlay = new ImageView(ImgPlay1);
