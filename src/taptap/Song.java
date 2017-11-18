@@ -22,26 +22,25 @@ import static taptap.Main.currentPath;
 public class Song {
 
     
-    Path musicFile;
-    InputStream m;
+    File musicFile;
     Media sound;
     MediaPlayer player;
 
     public Song(String music) throws IOException {
       if(music.equals("Closer")) {
-        musicFile = Paths.get(currentPath.toString(), "Songs", "Closer.mp3");
+        musicFile = new File("Songs"+File.separator+"Closer.mp3");
       } 
       else if(music.equals("Summer")) {
-        musicFile = Paths.get(currentPath.toString(), "Songs", "Summer.mp3");
+        musicFile = new File("Songs"+File.separator+"Summer.mp3");
       } 
       else if(music.equals("This is")) {
-        musicFile = Paths.get(currentPath.toString(), "Songs", "This is.mp3");
+        musicFile = new File("Songs"+File.separator+"This is.mp3");
       } 
       else if(music.equals("Roses")) {
-        musicFile = Paths.get(currentPath.toString(), "Songs", "Roses.mp3");
+        musicFile = new File("Songs"+File.separator+"Roses.mp3");
       } 
-      m = Files.newInputStream(Paths.get(musicFile.toString()));
-      sound = new Media(m.toString());
+      
+      sound = new Media(musicFile.toURI().toString());
       player = new MediaPlayer(sound);
     }
 

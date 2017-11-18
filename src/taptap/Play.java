@@ -17,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.Box;
 import javafx.util.Duration;
 import static taptap.Main.scene2;
@@ -128,11 +129,17 @@ public class Play implements EventHandler<KeyEvent> {
         greenball.setX(304);
         pinkball.setX(411.5);
         purpleball.setX(516.5);
+        
+        //MediaPlayer closer = new Song("Closer").getPlayer();
+     //closer.play();
+     MediaPlayer summer = new Song("Summer").getPlayer();
+     summer.play();
 
         pause.setOnMouseExited(event -> pause.setImage(pause1Img));
         pause.setOnMouseEntered(event -> pause.setImage(pause2Img));
         pause.setOnMouseClicked(event -> {
             try {
+                summer.pause();
                 Main.scene5 = new Scene(new Pause().getPause());
                 Main.primaryStage.setScene(Main.scene5);
                 Main.primaryStage.show();
@@ -196,6 +203,8 @@ public class Play implements EventHandler<KeyEvent> {
      tt4.setAutoReverse(true);
  
      tt4.play();
+     
+     
      
      
      
