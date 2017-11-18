@@ -42,6 +42,10 @@ public class Song {
       
       sound = new Media(musicFile.toURI().toString());
       player = new MediaPlayer(sound);
+      
+    }
+    public Media getMedia(){
+        return sound;
     }
 
     public MediaPlayer getPlayer() {

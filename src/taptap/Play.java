@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.util.Duration;
+import java.text.DecimalFormat;
 
 public class Play implements EventHandler<KeyEvent> {
 
@@ -51,7 +52,6 @@ public class Play implements EventHandler<KeyEvent> {
     ImageView ivpink;
     ImageView ivpurple;
 
-
     ArrayList<Integer> arrayPos1 = new ArrayList<Integer>();
     ArrayList<Integer> arrayPos2 = new ArrayList<Integer>();
     ArrayList<Integer> arrayPos3 = new ArrayList<Integer>();
@@ -59,12 +59,13 @@ public class Play implements EventHandler<KeyEvent> {
     private Connection connect1;
     private Statement stat1;
     private ResultSet rs;
-    private int time;
+    //private int time;
     private int songDuration;
-    
+    MyTime time = new MyTime();
+
     public Pane gameApp() throws IOException, SQLException, ClassNotFoundException {
-        boolean state = false;
-        
+        //boolean state = false;
+
         Pane game = new Pane();
         Path gameScreenPath = Paths.get(currentPath.toString(), "Image", "basicBg.png");
         Path pause1Path = Paths.get(currentPath.toString(), "Image", "pause1.png");
@@ -132,7 +133,6 @@ public class Play implements EventHandler<KeyEvent> {
         ivpink.setY(490);
         ivpurple.setY(490);
 
-        
         // get location positions
         connect1 = DriverManager.getConnection("jdbc:ucanaccess://C://Users//Mac//Desktop//crazyTap//tapNodes.accdb");
         stat1 = connect1.createStatement();
@@ -150,16 +150,85 @@ public class Play implements EventHandler<KeyEvent> {
 
         //MediaPlayer closer = new Song("Closer").getPlayer();
         //closer.play();
-        MediaPlayer summer = new Song("Summer").getPlayer();
+        
+        MediaPlayer summer = new Song("Closer").getPlayer();
         summer.play();
+        
         summer.currentTimeProperty().addListener(new ChangeListener<Duration>() {
             @Override
             public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
+                songDuration = (int) newValue.toSeconds();
+                //System.out.println(songDuration);
+                //time.update((int)songDuration);
                 
-            }
+           }
+           
         });
-        
 
+        Duration summerTime = Duration.seconds(17);
+        
+        Duration time = Duration.seconds(0);
+        //System.out.println("Summer du ="+(int)summer.getTotalDuration().toSeconds());
+        while(summerTime.greaterThan(time)){
+          if (arrayPos1.get((int)time.toSeconds()) == 1) {
+            //tt1.play();
+
+            Ball temp = new Ball("blue");
+            ImageView iv = temp.getBall();
+            TranslateTransition tt = new TranslateTransition(Duration.millis(2000), iv);
+            tt.setByY(600);
+            tt.setDelay(Duration.seconds((int)time.toSeconds()));
+            tt.play();
+
+            transList.add(tt);
+            ballList.add(temp);
+            System.out.println("1");
+        } 
+          if (arrayPos2.get((int)time.toSeconds()) == 1) {
+            Ball temp = new Ball("green");
+            ImageView iv = temp.getBall();
+            TranslateTransition tt = new TranslateTransition(Duration.millis(2000), iv);
+            tt.setByY(600);
+            tt.setDelay(Duration.seconds((int)time.toSeconds()));
+            tt.play();
+
+            transList.add(tt);
+            ballList.add(temp);
+            System.out.println("2");
+        } 
+          if (arrayPos3.get((int)time.toSeconds()) == 1) {
+            Ball temp = new Ball("pink");
+            ImageView iv = temp.getBall();
+            TranslateTransition tt = new TranslateTransition(Duration.millis(2000), iv);
+            tt.setByY(600);
+            tt.setDelay(Duration.seconds((int)time.toSeconds()));
+            tt.play();
+
+            transList.add(tt);
+            ballList.add(temp);
+            System.out.println("3");
+        } 
+          if (arrayPos4.get((int)time.toSeconds()) == 1) {
+            Ball temp = new Ball("purple");
+            ImageView iv = temp.getBall();
+            TranslateTransition tt = new TranslateTransition(Duration.millis(2000), iv);
+            tt.setByY(600);
+            tt.setDelay(Duration.seconds((int)time.toSeconds()));
+            tt.play();
+
+            transList.add(tt);
+            ballList.add(temp);
+            System.out.println("4");
+        }
+                   time = time.add(Duration.seconds(1));
+        }
+        
+        
+        
+      
+        songDuration  = (int) summer.getCurrentTime().toSeconds();
+        System.out.println(songDuration);
+        System.out.println(time);
         pause.setOnMouseExited(event -> pause.setImage(pause1Img));
         pause.setOnMouseEntered(event -> pause.setImage(pause2Img));
         pause.setOnMouseClicked(event -> {
@@ -209,62 +278,54 @@ public class Play implements EventHandler<KeyEvent> {
             }
         });
 
-        if (!state) {
-            state = true;
-            for (time = 0; time < 17; time++) {
-                if (arrayPos1.get(time) == 1) {
-                    //tt1.play();
-
-                    Ball temp = new Ball("blue");
-                    ImageView iv = temp.getBall();
-                    TranslateTransition tt = new TranslateTransition(Duration.millis(2000), iv);
-                    tt.setByY(600);
-                    tt.setDelay(Duration.millis(time * 200));
-                    tt.play();
-
-                    transList.add(tt);
-                    ballList.add(temp);
-                    System.out.println("1");
-                } else if (arrayPos2.get(time) == 1) {
-                    Ball temp = new Ball("green");
-                    ImageView iv = temp.getBall();
-                    TranslateTransition tt = new TranslateTransition(Duration.millis(2000), iv);
-                    tt.setByY(600);
-                    tt.setDelay(Duration.millis(time * 200));
-                    tt.play();
-
-                    transList.add(tt);
-                    ballList.add(temp);
-                    System.out.println("2");
-                } else if (arrayPos3.get(time) == 1) {
-                    Ball temp = new Ball("pink");
-                    ImageView iv = temp.getBall();
-                    TranslateTransition tt = new TranslateTransition(Duration.millis(2000), iv);
-                    tt.setByY(600);
-                    tt.setDelay(Duration.millis(time * 200));
-                    tt.play();
-
-                    transList.add(tt);
-                    ballList.add(temp);
-                    System.out.println("3");
-                } else if (arrayPos4.get(time) == 1) {
-                    Ball temp = new Ball("purple");
-                    ImageView iv = temp.getBall();
-                    TranslateTransition tt = new TranslateTransition(Duration.millis(2000), iv);
-                    tt.setByY(600);
-                    tt.setDelay(Duration.millis(time * 200));
-                    tt.play();
-
-                    transList.add(tt);
-                    ballList.add(temp);
-                    System.out.println("4");
-                }
-
-            }
-
-        }
-
-        game.getChildren().addAll(textBox, bg, pause, LifeLine); 
+//        if (arrayPos1.get(songDuration) == 1) {
+//            //tt1.play();
+//
+//            Ball temp = new Ball("blue");
+//            ImageView iv = temp.getBall();
+//            TranslateTransition tt = new TranslateTransition(Duration.millis(2000), iv);
+//            tt.setByY(600);
+//            tt.setDelay(Duration.seconds(songDuration));
+//            tt.play();
+//
+//            transList.add(tt);
+//            ballList.add(temp);
+//            System.out.println("1");
+//        } else if (arrayPos2.get(songDuration) == 1) {
+//            Ball temp = new Ball("green");
+//            ImageView iv = temp.getBall();
+//            TranslateTransition tt = new TranslateTransition(Duration.millis(2000), iv);
+//            tt.setByY(600);
+//            tt.setDelay(Duration.millis(songDuration));
+//            tt.play();
+//
+//            transList.add(tt);
+//            ballList.add(temp);
+//            System.out.println("2");
+//        } else if (arrayPos3.get(songDuration) == 1) {
+//            Ball temp = new Ball("pink");
+//            ImageView iv = temp.getBall();
+//            TranslateTransition tt = new TranslateTransition(Duration.millis(2000), iv);
+//            tt.setByY(600);
+//            tt.setDelay(Duration.millis(songDuration));
+//            tt.play();
+//
+//            transList.add(tt);
+//            ballList.add(temp);
+//            System.out.println("3");
+//        } else if (arrayPos4.get(songDuration) == 1) {
+//            Ball temp = new Ball("purple");
+//            ImageView iv = temp.getBall();
+//            TranslateTransition tt = new TranslateTransition(Duration.millis(2000), iv);
+//            tt.setByY(600);
+//            tt.setDelay(Duration.millis(songDuration));
+//            tt.play();
+//
+//            transList.add(tt);
+//            ballList.add(temp);
+//            System.out.println("4");
+//        }
+        game.getChildren().addAll(textBox, bg, pause, LifeLine);
         for (int i = 0; i < ballList.size(); i++) {
             game.getChildren().add(ballList.get(i).getBall());
             System.out.println("getbb");

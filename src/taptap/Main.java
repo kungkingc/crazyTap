@@ -55,9 +55,7 @@ public class Main extends Application {
         InputStream howto2 = Files.newInputStream(Paths.get(howto2Path.toString()));
         InputStream exit1 = Files.newInputStream(Paths.get(exit1Path.toString()));
         InputStream exit2 = Files.newInputStream(Paths.get(exit2Path.toString()));
-        
-        
-        
+       
         Image ImgInput1 = new Image(input);
         Image ImgPlay1 = new Image(play1);
         Image ImgPlay2 = new Image(play2);
@@ -65,8 +63,6 @@ public class Main extends Application {
         Image ImgHowto2 = new Image(howto2);
         Image ImgExit1 = new Image(exit1);
         Image ImgExit2 = new Image(exit2);
-        
-
 
         ImageView iv1 = new ImageView(ImgInput1);
         ImageView ivPlay = new ImageView(ImgPlay1);
@@ -74,8 +70,6 @@ public class Main extends Application {
         ImageView ivExit = new ImageView(ImgExit1);
        
         
-        
-
         ivPlay.setX(320);
         ivPlay.setY(390);
 
