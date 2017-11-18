@@ -118,7 +118,16 @@ public class Play implements EventHandler<KeyEvent> {
         ivpurple.setY(490);
         
 
+        //ball
+        blueball = new Ball("blue").getBall();
+        greenball = new Ball("green").getBall();
+        pinkball = new Ball("pink").getBall();
+        purpleball = new Ball("purple").getBall();
         
+        blueball.setX(195);
+        greenball.setX(304);
+        pinkball.setX(411.5);
+        purpleball.setX(516.5);
 
         pause.setOnMouseExited(event -> pause.setImage(pause1Img));
         pause.setOnMouseEntered(event -> pause.setImage(pause2Img));
@@ -160,18 +169,40 @@ public class Play implements EventHandler<KeyEvent> {
         });
 
         
-        TranslateTransition tt = new TranslateTransition(Duration.millis(2000), ivbb);
-     tt.setByY(700);
-     tt.setCycleCount(4);
-     tt.setAutoReverse(true);
+        TranslateTransition tt1 = new TranslateTransition(Duration.millis(2000), blueball);
+     tt1.setByY(700);
+     tt1.setCycleCount(4);
+     tt1.setAutoReverse(true);
  
-     tt.play();
+     tt1.play();
+     
+     TranslateTransition tt2 = new TranslateTransition(Duration.millis(2000), greenball);
+     tt2.setByY(700);
+     tt2.setCycleCount(4);
+     tt2.setAutoReverse(true);
+ 
+     tt2.play();
+     
+     TranslateTransition tt3 = new TranslateTransition(Duration.millis(2000), pinkball);
+     tt3.setByY(700);
+     tt3.setCycleCount(4);
+     tt3.setAutoReverse(true);
+ 
+     tt3.play();
+     
+     TranslateTransition tt4 = new TranslateTransition(Duration.millis(2000), purpleball);
+     tt4.setByY(700);
+     tt4.setCycleCount(4);
+     tt4.setAutoReverse(true);
+ 
+     tt4.play();
+     
      
      
         //Main.gameScene.setOnKeyPressed(event -> System.out.println("ahhhhh"));
 //        Main.gameScene.addEventFilter(KeyEvent.KEY_PRESSED,
 //                event -> System.out.println("Pressed: " + event.getCode()));
-        game.getChildren().addAll(textBox,bg, pause, LifeLine, ivblue, ivgreen, ivpink, ivpurple,ivbb);
+        game.getChildren().addAll(textBox,bg, pause, LifeLine, ivblue, ivgreen, ivpink, ivpurple,blueball,greenball,pinkball,purpleball);
         return game;
     }
 

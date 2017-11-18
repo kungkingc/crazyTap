@@ -34,6 +34,7 @@ public class Ball {
         else if(color.equals("purple"))
             ball = Paths.get(currentPath.toString(), "Image", "purpleball.png");
         
+        
         b = Files.newInputStream(Paths.get(ball.toString()));
         Img = new Image(b);
         iv = new ImageView(Img);
