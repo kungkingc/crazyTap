@@ -56,6 +56,7 @@ public class Play implements EventHandler<KeyEvent> {
     ArrayList<Integer> arrayPos2 = new ArrayList<Integer>();
     ArrayList<Integer> arrayPos3 = new ArrayList<Integer>();
     ArrayList<Integer> arrayPos4 = new ArrayList<Integer>();
+    ArrayList<Integer> tryTime = new ArrayList<Integer>();
     private Connection connect1;
     private Statement stat1;
     private ResultSet rs;
@@ -136,97 +137,104 @@ public class Play implements EventHandler<KeyEvent> {
         // get location positions
         connect1 = DriverManager.getConnection("jdbc:ucanaccess://C://Users//Mac//Desktop//crazyTap//tapNodes.accdb");
         stat1 = connect1.createStatement();
-        rs = stat1.executeQuery("select col1, col2, col3,col4 from book");
+        rs = stat1.executeQuery("select time, col1, col2, col3,col4 from book");
         while (rs.next()) {
-            int pos1 = rs.getInt(1);
-            int pos2 = rs.getInt(2);
-            int pos3 = rs.getInt(3);
-            int pos4 = rs.getInt(4);
+            int timey = rs.getInt(1);
+            int pos1 = rs.getInt(2);
+            int pos2 = rs.getInt(3);
+            int pos3 = rs.getInt(4);
+            int pos4 = rs.getInt(5);
+            tryTime.add(timey);
             arrayPos1.add(pos1);
             arrayPos2.add(pos2);
             arrayPos3.add(pos3);
             arrayPos4.add(pos4);
+
+            //System.out.println(timey + " " + pos1+ " " + pos2+ " " +pos3+ " " +pos4);
         }
 
         //MediaPlayer closer = new Song("Closer").getPlayer();
         //closer.play();
-        
         MediaPlayer summer = new Song("Closer").getPlayer();
         summer.play();
-        
+
         summer.currentTimeProperty().addListener(new ChangeListener<Duration>() {
             @Override
             public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
-                songDuration = (int) newValue.toSeconds();
+
                 //System.out.println(songDuration);
                 //time.update((int)songDuration);
-                
-           }
-           
+            }
+
         });
 
-        Duration summerTime = Duration.seconds(17);
-        
-        Duration time = Duration.seconds(0);
+        Duration summerTime = Duration.millis(5720);
+
+        Duration time = Duration.millis(0);
+        int comp = tryTime.get(0);
+        System.out.println("comp = " + comp);
+        int index = 0;
         //System.out.println("Summer du ="+(int)summer.getTotalDuration().toSeconds());
-        while(summerTime.greaterThan(time)){
-          if (arrayPos1.get((int)time.toSeconds()) == 1) {
-            //tt1.play();
+        while (summerTime.greaterThan(time)) {
+            if ((int) time.toMillis() == comp) {
+                if (arrayPos1.get(index) == 1) {
 
-            Ball temp = new Ball("blue");
-            ImageView iv = temp.getBall();
-            TranslateTransition tt = new TranslateTransition(Duration.millis(2000), iv);
-            tt.setByY(600);
-            tt.setDelay(Duration.seconds((int)time.toSeconds()));
-            tt.play();
+                    Ball temp = new Ball("blue");
+                    ImageView iv = temp.getBall();
+                    TranslateTransition tt = new TranslateTransition(Duration.millis(2000), iv);
+                    tt.setByY(600);
+                    tt.setDelay(Duration.seconds((int) time.toSeconds()));
+                    tt.play();
 
-            transList.add(tt);
-            ballList.add(temp);
-            System.out.println("1");
-        } 
-          if (arrayPos2.get((int)time.toSeconds()) == 1) {
-            Ball temp = new Ball("green");
-            ImageView iv = temp.getBall();
-            TranslateTransition tt = new TranslateTransition(Duration.millis(2000), iv);
-            tt.setByY(600);
-            tt.setDelay(Duration.seconds((int)time.toSeconds()));
-            tt.play();
+                    transList.add(tt);
+                    ballList.add(temp);
+                    System.out.println("1");
+                }
+                if (arrayPos2.get((int) time.toSeconds()) == 1) {
+                    Ball temp = new Ball("green");
+                    ImageView iv = temp.getBall();
+                    TranslateTransition tt = new TranslateTransition(Duration.millis(2000), iv);
+                    tt.setByY(600);
+                    tt.setDelay(Duration.seconds((int) time.toSeconds()));
+                    tt.play();
 
-            transList.add(tt);
-            ballList.add(temp);
-            System.out.println("2");
-        } 
-          if (arrayPos3.get((int)time.toSeconds()) == 1) {
-            Ball temp = new Ball("pink");
-            ImageView iv = temp.getBall();
-            TranslateTransition tt = new TranslateTransition(Duration.millis(2000), iv);
-            tt.setByY(600);
-            tt.setDelay(Duration.seconds((int)time.toSeconds()));
-            tt.play();
+                    transList.add(tt);
+                    ballList.add(temp);
+                    System.out.println("2");
+                }
+                if (arrayPos3.get((int) time.toSeconds()) == 1) {
+                    Ball temp = new Ball("pink");
+                    ImageView iv = temp.getBall();
+                    TranslateTransition tt = new TranslateTransition(Duration.millis(2000), iv);
+                    tt.setByY(600);
+                    tt.setDelay(Duration.seconds((int) time.toSeconds()));
+                    tt.play();
 
-            transList.add(tt);
-            ballList.add(temp);
-            System.out.println("3");
-        } 
-          if (arrayPos4.get((int)time.toSeconds()) == 1) {
-            Ball temp = new Ball("purple");
-            ImageView iv = temp.getBall();
-            TranslateTransition tt = new TranslateTransition(Duration.millis(2000), iv);
-            tt.setByY(600);
-            tt.setDelay(Duration.seconds((int)time.toSeconds()));
-            tt.play();
+                    transList.add(tt);
+                    ballList.add(temp);
+                    System.out.println("3");
+                }
+                if (arrayPos4.get((int) time.toSeconds()) == 1) {
+                    Ball temp = new Ball("purple");
+                    ImageView iv = temp.getBall();
+                    TranslateTransition tt = new TranslateTransition(Duration.millis(2000), iv);
+                    tt.setByY(600);
+                    tt.setDelay(Duration.seconds((int) time.toSeconds()));
+                    tt.play();
 
-            transList.add(tt);
-            ballList.add(temp);
-            System.out.println("4");
+                    transList.add(tt);
+                    ballList.add(temp);
+                    System.out.println("4");
+                }
+                index++;
+                comp = tryTime.get(index);
+            }
+
+            time = time.add(Duration.millis(1));
+            //System.out.println("time : " + (int) time.toMillis());
         }
-                   time = time.add(Duration.seconds(1));
-        }
-        
-        
-        
-      
-        songDuration  = (int) summer.getCurrentTime().toSeconds();
+
+        songDuration = (int) summer.getCurrentTime().toSeconds();
         System.out.println(songDuration);
         System.out.println(time);
         pause.setOnMouseExited(event -> pause.setImage(pause1Img));

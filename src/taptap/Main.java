@@ -68,7 +68,6 @@ public class Main extends Application {
         ImageView ivPlay = new ImageView(ImgPlay1);
         ImageView ivHowto = new ImageView(ImgHowto1);
         ImageView ivExit = new ImageView(ImgExit1);
-       
         
         ivPlay.setX(320);
         ivPlay.setY(390);
