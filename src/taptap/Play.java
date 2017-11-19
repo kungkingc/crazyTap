@@ -33,7 +33,7 @@ import java.text.DecimalFormat;
 
 public class Play implements EventHandler<KeyEvent> {
 
-    ArrayList<Ball> ballList = new ArrayList();
+    ArrayList<Ball> ballList = new ArrayList<Ball>();
 
     Image Imgblue1;
     Image Imgblue2;
@@ -96,8 +96,8 @@ public class Play implements EventHandler<KeyEvent> {
         Image pause2Img = new Image(pause2);
         
 
-        ArrayList<Ball> ballList = new ArrayList();
-        ArrayList<TranslateTransition> transList = new ArrayList();
+        ArrayList<Ball> ballList = new ArrayList<Ball>();
+        ArrayList<TranslateTransition> transList = new ArrayList<TranslateTransition>();
 
         Imgblue1 = new Image(blue1);
         Imgblue2 = new Image(blue2);
@@ -131,9 +131,9 @@ public class Play implements EventHandler<KeyEvent> {
 
         // get location positions
         //nat's path
-        connect1 = DriverManager.getConnection("jdbc:ucanaccess:///Users/macintoshhd/Desktop/crazyTap/tapNodes.accdb");
+        //connect1 = DriverManager.getConnection("jdbc:ucanaccess:///Users/macintoshhd/Desktop/crazyTap/tapNodes.accdb");
         //fon's path
-        //connect1 = DriverManager.getConnection("jdbc:ucanaccess://C://Users//Mac//Desktop//crazyTap//tapNodes.accdb");
+        connect1 = DriverManager.getConnection("jdbc:ucanaccess://C://Users//Mac//Desktop//crazyTap//tapNodes.accdb");
         //kk's path
         //connect1 = DriverManager.getConnection("jdbc:ucanaccess://C://Users//Macbook Pro//Documents/tapNodes.accdb");
         stat1 = connect1.createStatement();
