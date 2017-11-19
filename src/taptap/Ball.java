@@ -28,8 +28,6 @@ public class Ball {
     Image Img;
     ImageView iv;
 
-    TranslateTransition tt;
-
     public Ball(String color) throws IOException {
         if (color.equals("blue")) {
             ball = Paths.get(currentPath.toString(), "Image", "blueball.png");
@@ -61,15 +59,6 @@ public class Ball {
             iv.setY(0);
         }
 
-        tt = new TranslateTransition(Duration.millis(2000), iv);
-        tt.setByY(600);
-        tt.setNode(iv);
-        //tt.setToY(750);
-
-    }
-
-    public void fall() {
-        tt.play();
     }
 
     public ImageView getBall() {

@@ -45,7 +45,7 @@ public class Play implements EventHandler<KeyEvent> {
     Image Imgpurple2;
 
     ImageView bg;
-    ImageView pause;   
+    ImageView pause;
     ImageView ivblue;
     ImageView ivgreen;
     ImageView ivpink;
@@ -69,7 +69,7 @@ public class Play implements EventHandler<KeyEvent> {
         Pane game = new Pane();
         Path gameScreenPath = Paths.get(currentPath.toString(), "Image", "basicBg.png");
         Path pause1Path = Paths.get(currentPath.toString(), "Image", "pause1.png");
-        Path pause2Path = Paths.get(currentPath.toString(), "Image", "pause2.png");    
+        Path pause2Path = Paths.get(currentPath.toString(), "Image", "pause2.png");
         Path blue1Path = Paths.get(currentPath.toString(), "Image", "blue1.png");
         Path blue2Path = Paths.get(currentPath.toString(), "Image", "blue2.png");
         Path green1Path = Paths.get(currentPath.toString(), "Image", "green1.png");
@@ -81,7 +81,7 @@ public class Play implements EventHandler<KeyEvent> {
 
         InputStream input = Files.newInputStream(Paths.get(gameScreenPath.toString()));
         InputStream pause1 = Files.newInputStream(Paths.get(pause1Path.toString()));
-        InputStream pause2 = Files.newInputStream(Paths.get(pause2Path.toString()));    
+        InputStream pause2 = Files.newInputStream(Paths.get(pause2Path.toString()));
         InputStream blue1 = Files.newInputStream(Paths.get(blue1Path.toString()));
         InputStream blue2 = Files.newInputStream(Paths.get(blue2Path.toString()));
         InputStream green1 = Files.newInputStream(Paths.get(green1Path.toString()));
@@ -94,7 +94,6 @@ public class Play implements EventHandler<KeyEvent> {
         Image BgImg = new Image(input);
         Image pause1Img = new Image(pause1);
         Image pause2Img = new Image(pause2);
-        
 
         ArrayList<Ball> ballList = new ArrayList<Ball>();
         ArrayList<TranslateTransition> transList = new ArrayList<TranslateTransition>();
@@ -109,13 +108,11 @@ public class Play implements EventHandler<KeyEvent> {
         Imgpurple2 = new Image(purple2);
 
         bg = new ImageView(BgImg);
-        pause = new ImageView(pause1Img);    
+        pause = new ImageView(pause1Img);
         ivblue = new ImageView(Imgblue1);
         ivgreen = new ImageView(Imggreen1);
         ivpink = new ImageView(Imgpink1);
         ivpurple = new ImageView(Imgpurple1);
-
-       
 
         pause.setX(680);
         pause.setY(30);
@@ -156,17 +153,12 @@ public class Play implements EventHandler<KeyEvent> {
         //MediaPlayer closer = new Song("Closer").getPlayer();
         //closer.play();
         MediaPlayer summer = new Song("Closer").getPlayer();
-        summer.play();
+        
 
-        summer.currentTimeProperty().addListener(new ChangeListener<Duration>() {
-            @Override
-            public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
+        
 
-                //System.out.println(songDuration);
-                //time.update((int)songDuration);
-            }
-
-        });
+        final TextField textBox = new TextField();
+        textBox.setPromptText("Write here");
 
         Duration summerTime = Duration.millis(5720);
 
@@ -181,9 +173,9 @@ public class Play implements EventHandler<KeyEvent> {
 
                     Ball temp = new Ball("blue");
                     ImageView iv = temp.getBall();
-                    TranslateTransition tt = new TranslateTransition(Duration.millis(2000), iv);
+                    TranslateTransition tt = new TranslateTransition(Duration.millis(1500), iv);
                     tt.setByY(600);
-                    tt.setDelay(Duration.seconds((int) time.toSeconds()));
+                    tt.setDelay(Duration.millis((int) time.toMillis()));
                     tt.play();
 
                     transList.add(tt);
@@ -193,9 +185,9 @@ public class Play implements EventHandler<KeyEvent> {
                 if (arrayPos2.get((int) time.toSeconds()) == 1) {
                     Ball temp = new Ball("green");
                     ImageView iv = temp.getBall();
-                    TranslateTransition tt = new TranslateTransition(Duration.millis(2000), iv);
+                    TranslateTransition tt = new TranslateTransition(Duration.millis(1500), iv);
                     tt.setByY(600);
-                    tt.setDelay(Duration.seconds((int) time.toSeconds()));
+                    tt.setDelay(Duration.millis((int) time.toMillis()));
                     tt.play();
 
                     transList.add(tt);
@@ -205,9 +197,9 @@ public class Play implements EventHandler<KeyEvent> {
                 if (arrayPos3.get((int) time.toSeconds()) == 1) {
                     Ball temp = new Ball("pink");
                     ImageView iv = temp.getBall();
-                    TranslateTransition tt = new TranslateTransition(Duration.millis(2000), iv);
+                    TranslateTransition tt = new TranslateTransition(Duration.millis(1500), iv);
                     tt.setByY(600);
-                    tt.setDelay(Duration.seconds((int) time.toSeconds()));
+                    tt.setDelay(Duration.millis((int) time.toMillis()));
                     tt.play();
 
                     transList.add(tt);
@@ -217,9 +209,9 @@ public class Play implements EventHandler<KeyEvent> {
                 if (arrayPos4.get((int) time.toSeconds()) == 1) {
                     Ball temp = new Ball("purple");
                     ImageView iv = temp.getBall();
-                    TranslateTransition tt = new TranslateTransition(Duration.millis(2000), iv);
+                    TranslateTransition tt = new TranslateTransition(Duration.millis(1500), iv);
                     tt.setByY(600);
-                    tt.setDelay(Duration.seconds((int) time.toSeconds()));
+                    tt.setDelay(Duration.millis((int) time.toMillis()));
                     tt.play();
 
                     transList.add(tt);
@@ -229,14 +221,41 @@ public class Play implements EventHandler<KeyEvent> {
                 index++;
                 comp = tryTime.get(index);
             }
+            textBox.setOnKeyPressed(new EventHandler<KeyEvent>() {
+                public void handle(KeyEvent ke) {
+                    if (ke.getText().equals("d")) {
+                        ivblue.setImage(Imgblue2);
+                    } else if (ke.getText().equals("f")) {
+                        ivgreen.setImage(Imggreen2);
+                    } else if (ke.getText().equals("j")) {
+                        ivpink.setImage(Imgpink2);
+                    } else if (ke.getText().equals("k")) {
+                        ivpurple.setImage(Imgpurple2);
+                    }
+                    //System.out.println("Key Pressed: " + ke.getText());
+                }
+            });
+
+            textBox.setOnKeyReleased(new EventHandler<KeyEvent>() {
+                public void handle(KeyEvent ke) {
+                    if (ke.getText().equals("d")) {
+                        ivblue.setImage(Imgblue1);
+                    } else if (ke.getText().equals("f")) {
+                        ivgreen.setImage(Imggreen1);
+                    } else if (ke.getText().equals("j")) {
+                        ivpink.setImage(Imgpink1);
+                    } else if (ke.getText().equals("k")) {
+                        ivpurple.setImage(Imgpurple1);
+                    }
+                    //System.out.println("Key Released: " + ke.getText());
+
+                }
+            });
 
             time = time.add(Duration.millis(1));
             //System.out.println("time : " + (int) time.toMillis());
         }
-
-        songDuration = (int) summer.getCurrentTime().toSeconds();
-        System.out.println(songDuration);
-        System.out.println(time);
+        
         pause.setOnMouseExited(event -> pause.setImage(pause1Img));
         pause.setOnMouseEntered(event -> pause.setImage(pause2Img));
         pause.setOnMouseClicked(event -> {
@@ -250,42 +269,20 @@ public class Play implements EventHandler<KeyEvent> {
             }
 
         });
+        new Thread(new Runnable(){
+             public void run(){
+                 try {
+                     Thread.sleep(820);
+                 } catch (InterruptedException ex) {
+                     Logger.getLogger(Play.class.getName()).log(Level.SEVERE, null, ex);
+                 }
 
-        final TextField textBox = new TextField();
-        textBox.setPromptText("Write here");
+                  //do something.........
 
-        textBox.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            public void handle(KeyEvent ke) {
-                if (ke.getText().equals("d")) {
-                    ivblue.setImage(Imgblue2);
-                } else if (ke.getText().equals("f")) {
-                    ivgreen.setImage(Imggreen2);
-                } else if (ke.getText().equals("j")) {
-                    ivpink.setImage(Imgpink2);
-                } else if (ke.getText().equals("k")) {
-                    ivpurple.setImage(Imgpurple2);
-                }
-
-                //System.out.println("Key Pressed: " + ke.getText());
-            }
-        });
-
-        textBox.setOnKeyReleased(new EventHandler<KeyEvent>() {
-            public void handle(KeyEvent ke) {
-                if (ke.getText().equals("d")) {
-                    ivblue.setImage(Imgblue1);
-                } else if (ke.getText().equals("f")) {
-                    ivgreen.setImage(Imggreen1);
-                } else if (ke.getText().equals("j")) {
-                    ivpink.setImage(Imgpink1);
-                } else if (ke.getText().equals("k")) {
-                    ivpurple.setImage(Imgpurple1);
-                }
-                //System.out.println("Key Released: " + ke.getText());
-
-            }
-        });
-
+                  System.out.println("all things done");
+             }
+       }).run();
+        summer.play();
         game.getChildren().addAll(textBox, bg, pause);
         for (int i = 0; i < ballList.size(); i++) {
             game.getChildren().add(ballList.get(i).getBall());
