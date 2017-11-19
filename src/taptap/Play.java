@@ -45,8 +45,7 @@ public class Play implements EventHandler<KeyEvent> {
     Image Imgpurple2;
 
     ImageView bg;
-    ImageView pause;
-    ImageView LifeLine;
+    ImageView pause;   
     ImageView ivblue;
     ImageView ivgreen;
     ImageView ivpink;
@@ -70,8 +69,7 @@ public class Play implements EventHandler<KeyEvent> {
         Pane game = new Pane();
         Path gameScreenPath = Paths.get(currentPath.toString(), "Image", "basicBg.png");
         Path pause1Path = Paths.get(currentPath.toString(), "Image", "pause1.png");
-        Path pause2Path = Paths.get(currentPath.toString(), "Image", "pause2.png");
-        Path lifelinePath = Paths.get(currentPath.toString(), "Image", "LifeLine.png");
+        Path pause2Path = Paths.get(currentPath.toString(), "Image", "pause2.png");    
         Path blue1Path = Paths.get(currentPath.toString(), "Image", "blue1.png");
         Path blue2Path = Paths.get(currentPath.toString(), "Image", "blue2.png");
         Path green1Path = Paths.get(currentPath.toString(), "Image", "green1.png");
@@ -83,8 +81,7 @@ public class Play implements EventHandler<KeyEvent> {
 
         InputStream input = Files.newInputStream(Paths.get(gameScreenPath.toString()));
         InputStream pause1 = Files.newInputStream(Paths.get(pause1Path.toString()));
-        InputStream pause2 = Files.newInputStream(Paths.get(pause2Path.toString()));
-        InputStream lifeline = Files.newInputStream(Paths.get(lifelinePath.toString()));
+        InputStream pause2 = Files.newInputStream(Paths.get(pause2Path.toString()));    
         InputStream blue1 = Files.newInputStream(Paths.get(blue1Path.toString()));
         InputStream blue2 = Files.newInputStream(Paths.get(blue2Path.toString()));
         InputStream green1 = Files.newInputStream(Paths.get(green1Path.toString()));
@@ -97,7 +94,7 @@ public class Play implements EventHandler<KeyEvent> {
         Image BgImg = new Image(input);
         Image pause1Img = new Image(pause1);
         Image pause2Img = new Image(pause2);
-        Image LifeLineImg = new Image(lifeline);
+        
 
         ArrayList<Ball> ballList = new ArrayList();
         ArrayList<TranslateTransition> transList = new ArrayList();
@@ -112,15 +109,13 @@ public class Play implements EventHandler<KeyEvent> {
         Imgpurple2 = new Image(purple2);
 
         bg = new ImageView(BgImg);
-        pause = new ImageView(pause1Img);
-        LifeLine = new ImageView(LifeLineImg);
+        pause = new ImageView(pause1Img);    
         ivblue = new ImageView(Imgblue1);
         ivgreen = new ImageView(Imggreen1);
         ivpink = new ImageView(Imgpink1);
         ivpurple = new ImageView(Imgpurple1);
 
-        LifeLine.setX(53);
-        LifeLine.setY(320);
+       
 
         pause.setX(680);
         pause.setY(30);
@@ -135,7 +130,12 @@ public class Play implements EventHandler<KeyEvent> {
         ivpurple.setY(490);
 
         // get location positions
-        connect1 = DriverManager.getConnection("jdbc:ucanaccess://C://Users//Mac//Desktop//crazyTap//tapNodes.accdb");
+        //nat's path
+        connect1 = DriverManager.getConnection("jdbc:ucanaccess:///Users/macintoshhd/Desktop/crazyTap/tapNodes.accdb");
+        //fon's path
+        //connect1 = DriverManager.getConnection("jdbc:ucanaccess://C://Users//Mac//Desktop//crazyTap//tapNodes.accdb");
+        //kk's path
+        //connect1 = DriverManager.getConnection("jdbc:ucanaccess://C://Users//Macbook Pro//Documents/tapNodes.accdb");
         stat1 = connect1.createStatement();
         rs = stat1.executeQuery("select time, col1, col2, col3,col4 from book");
         while (rs.next()) {
@@ -286,54 +286,7 @@ public class Play implements EventHandler<KeyEvent> {
             }
         });
 
-//        if (arrayPos1.get(songDuration) == 1) {
-//            //tt1.play();
-//
-//            Ball temp = new Ball("blue");
-//            ImageView iv = temp.getBall();
-//            TranslateTransition tt = new TranslateTransition(Duration.millis(2000), iv);
-//            tt.setByY(600);
-//            tt.setDelay(Duration.seconds(songDuration));
-//            tt.play();
-//
-//            transList.add(tt);
-//            ballList.add(temp);
-//            System.out.println("1");
-//        } else if (arrayPos2.get(songDuration) == 1) {
-//            Ball temp = new Ball("green");
-//            ImageView iv = temp.getBall();
-//            TranslateTransition tt = new TranslateTransition(Duration.millis(2000), iv);
-//            tt.setByY(600);
-//            tt.setDelay(Duration.millis(songDuration));
-//            tt.play();
-//
-//            transList.add(tt);
-//            ballList.add(temp);
-//            System.out.println("2");
-//        } else if (arrayPos3.get(songDuration) == 1) {
-//            Ball temp = new Ball("pink");
-//            ImageView iv = temp.getBall();
-//            TranslateTransition tt = new TranslateTransition(Duration.millis(2000), iv);
-//            tt.setByY(600);
-//            tt.setDelay(Duration.millis(songDuration));
-//            tt.play();
-//
-//            transList.add(tt);
-//            ballList.add(temp);
-//            System.out.println("3");
-//        } else if (arrayPos4.get(songDuration) == 1) {
-//            Ball temp = new Ball("purple");
-//            ImageView iv = temp.getBall();
-//            TranslateTransition tt = new TranslateTransition(Duration.millis(2000), iv);
-//            tt.setByY(600);
-//            tt.setDelay(Duration.millis(songDuration));
-//            tt.play();
-//
-//            transList.add(tt);
-//            ballList.add(temp);
-//            System.out.println("4");
-//        }
-        game.getChildren().addAll(textBox, bg, pause, LifeLine);
+        game.getChildren().addAll(textBox, bg, pause);
         for (int i = 0; i < ballList.size(); i++) {
             game.getChildren().add(ballList.get(i).getBall());
             System.out.println("getbb");
