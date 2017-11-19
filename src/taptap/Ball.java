@@ -27,6 +27,8 @@ public class Ball {
     InputStream b;
     Image Img;
     ImageView iv;
+    double updatedY;
+    
 
     public Ball(String color) throws IOException {
         if (color.equals("blue")) {
@@ -35,33 +37,46 @@ public class Ball {
             Img = new Image(b);
             iv = new ImageView(Img);
             iv.setX(195);
-            iv.setY(0);
+            iv.setY(-100);
+
         } else if (color.equals("green")) {
             ball = Paths.get(currentPath.toString(), "Image", "greenball.png");
             b = Files.newInputStream(Paths.get(ball.toString()));
             Img = new Image(b);
             iv = new ImageView(Img);
             iv.setX(304);
-            iv.setY(0);
+            iv.setY(-100);
+            
         } else if (color.equals("pink")) {
             ball = Paths.get(currentPath.toString(), "Image", "pinkball.png");
             b = Files.newInputStream(Paths.get(ball.toString()));
             Img = new Image(b);
             iv = new ImageView(Img);
             iv.setX(411.5);
-            iv.setY(0);
+            iv.setY(-100);
+            
         } else if (color.equals("purple")) {
             ball = Paths.get(currentPath.toString(), "Image", "purpleball.png");
             b = Files.newInputStream(Paths.get(ball.toString()));
             Img = new Image(b);
             iv = new ImageView(Img);
             iv.setX(516.5);
-            iv.setY(0);
+            iv.setY(-100);
         }
+        updatedY = -100;
 
     }
 
     public ImageView getBall() {
         return iv;
+    }
+
+    public void setUpdatedY(double updatedY) {
+        this.updatedY = updatedY;
+    }
+    
+    
+    public double getY() {
+        return this.updatedY;
     }
 }

@@ -11,10 +11,14 @@ package taptap;
  */
 public class Score {
     int score;
+    int highScore;
 
-    public Score(int score) {
-        this.score = score;
+    public Score(int highscore) {
+        this.highScore = highscore;
+        this.score = 0;
     }
+
+    
     
     public void addScore(int score){
         this.score+=score;

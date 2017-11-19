@@ -26,54 +26,44 @@ import static taptap.Main.currentPath;
  * @author Mac
  */
 public class Pause {
-    public Pane getPause() throws IOException 
+    public Pane getPause(String songname) throws IOException 
     {
         Pane game = new Pane();
         
         Path pauseBGPath = Paths.get(currentPath.toString(), "Image", "pauseBG.png");
         Path restart1Path = Paths.get(currentPath.toString(), "Image", "restart1.png");
         Path restart2Path = Paths.get(currentPath.toString(), "Image", "restart2.png");
-        Path continue1Path = Paths.get(currentPath.toString(), "Image", "continue1.png");
-        Path continue2Path = Paths.get(currentPath.toString(), "Image", "continue2.png");
         Path library1Path = Paths.get(currentPath.toString(), "Image", "musicLibrary1.png");
         Path library2Path = Paths.get(currentPath.toString(), "Image", "musicLibrary2.png");
-        
-        
         
         InputStream bgInput = Files.newInputStream(Paths.get(pauseBGPath.toString()));
         InputStream restart1 = Files.newInputStream(Paths.get(restart1Path.toString()));
         InputStream restart2 = Files.newInputStream(Paths.get(restart2Path.toString()));
-        InputStream continue1 = Files.newInputStream(Paths.get(continue1Path.toString()));
-        InputStream continue2 = Files.newInputStream(Paths.get(continue2Path.toString()));
         InputStream library1 = Files.newInputStream(Paths.get(library1Path.toString()));
         InputStream library2 = Files.newInputStream(Paths.get(library2Path.toString()));
         
         Image BgImg = new Image(bgInput);
         Image restart1Img = new Image(restart1);
         Image restart2Img = new Image(restart2);
-        Image continue1Img = new Image(continue1);
-        Image continue2Img = new Image(continue2);
         Image library1Img = new Image(library1);
         Image library2Img = new Image(library2);
         
         ImageView bg = new ImageView(BgImg);
         ImageView restart = new ImageView(restart1Img);
-        ImageView continued = new ImageView(continue1Img);
         ImageView library = new ImageView(library1Img);
         
         restart.setX(300);
-        restart.setY(200);
-        continued.setX(290);
-        continued.setY(260);
+        restart.setY(220);
+
         library.setX(230);
-        library.setY(320);
+        library.setY(300);
         
         
         restart.setOnMouseExited(event-> restart.setImage(restart1Img));
         restart.setOnMouseEntered(event-> restart.setImage(restart2Img));
         restart.setOnMouseClicked(event->{
             try {
-                Main.gameScene = new Scene(new Play().gameApp());
+                Main.gameScene = new Scene(new Play().gameApp(songname),800,600);
                 Main.primaryStage.setScene(Main.gameScene);
                 Main.primaryStage.show();
             } catch (IOException ex) {
@@ -86,22 +76,6 @@ public class Pause {
             
         });
         
-        continued.setOnMouseExited(event-> continued.setImage(continue1Img));
-        continued.setOnMouseEntered(event-> continued.setImage(continue2Img));
-        continued.setOnMouseClicked(event->{
-            try {
-                Main.gameScene = new Scene(new Play().gameApp());
-                Main.primaryStage.setScene(Main.gameScene);
-                Main.primaryStage.show();
-            } catch (IOException ex) {
-                Logger.getLogger(Pause.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
-                Logger.getLogger(Pause.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(Pause.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-        });
         
         library.setOnMouseExited(event-> library.setImage(library1Img));
         library.setOnMouseEntered(event-> library.setImage(library2Img));
@@ -122,7 +96,7 @@ public class Pause {
         
         
         
-        game.getChildren().addAll(bg,restart,continued,library);
+        game.getChildren().addAll(bg,restart,library);
         
         return game;
     }

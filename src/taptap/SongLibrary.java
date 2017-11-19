@@ -109,7 +109,12 @@ public class SongLibrary {
         select.setOnMouseClicked(event->{
             Pane pane2;
             try {
-                Main.scene4 = new Scene(new Mode().selectMode());
+                String temp="Closer";
+                if(bg.getImage().equals(ImgCloser)) temp = "Closer";
+                else if(bg.getImage().equals(ImgRoses)) temp = "Roses";
+                else if(bg.getImage().equals(ImgSummer)) temp = "Summer";
+                else if(bg.getImage().equals(ImgThisIs)) temp = "This is";
+                Main.scene4 = new Scene(new Mode().selectMode(temp));
                 Main.primaryStage.setScene(Main.scene4);
                 Main.primaryStage.show();
             } catch (IOException ex) {

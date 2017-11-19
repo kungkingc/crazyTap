@@ -25,7 +25,7 @@ import static taptap.Main.currentPath;
  * @author Mac
  */
 public class Mode {
-    public Pane selectMode() throws IOException{
+    public Pane selectMode(String songname) throws IOException{
         Pane p2 = new Pane();
         
         Path modePagePath = Paths.get(currentPath.toString(), "Image", "Mode.jpg");
@@ -78,7 +78,7 @@ public class Mode {
         beginner.setOnMouseEntered(event-> beginner.setImage(Beginner2Img));
         beginner.setOnMouseClicked(event -> {
             try {
-                Main.gameScene = new Scene(new Play().gameApp(),800,600);
+                Main.gameScene = new Scene(new Play().gameApp(songname),800,600);
                 Main.primaryStage.setScene(Main.gameScene);
                 Main.primaryStage.show();
             } catch (IOException ex) {
@@ -94,7 +94,7 @@ public class Mode {
         intermediate.setOnMouseEntered(event-> intermediate.setImage(intermediate2Img));
         intermediate.setOnMouseClicked(event -> {
             try {
-                Main.gameScene = new Scene(new Play().gameApp());
+                Main.gameScene = new Scene(new Play().gameApp(songname),800,600);
                 Main.primaryStage.setScene(Main.gameScene);
                 Main.primaryStage.show();
             } catch (IOException ex) {
@@ -110,7 +110,7 @@ public class Mode {
         advance.setOnMouseEntered(event-> advance.setImage(Advanced2Img));
         advance.setOnMouseClicked(event -> {
             try {
-                Main.gameScene = new Scene(new Play().gameApp());
+                Main.gameScene = new Scene(new Play().gameApp(songname),800,600);
                 Main.primaryStage.setScene(Main.gameScene);
                 Main.primaryStage.show();
             } catch (IOException ex) {
