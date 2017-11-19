@@ -34,7 +34,7 @@ import java.text.DecimalFormat;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 
-public class Play  {
+public class Play {
 
     Duration time = Duration.millis(0);
 
@@ -65,23 +65,29 @@ public class Play  {
     private Connection connect1;
     private Statement stat1;
     private ResultSet rs;
-    
+
     //ArrayList<Ball> ballList;
     ArrayList<Ball> blueList;
     ArrayList<Ball> greenList;
     ArrayList<Ball> pinkList;
     ArrayList<Ball> purpleList;
-    
+
     ArrayList<TranslateTransition> transList;
     //private int time;
     //private int songDuration;
     //MyTime time = new MyTime();
     int comp;
     Label scoreLabel = new Label("0");
-    Label highLabel;
+    Label highLabel = new Label("");
+    int highScore;
+    String songname;
+    String mode;
 
-    public Pane gameApp(String songname,String mode) throws IOException, SQLException, ClassNotFoundException {
+    public Pane gameApp(String songname, String mode) throws IOException, SQLException, ClassNotFoundException {
         //boolean state = false;
+        highScore hScore = new highScore();
+        this.songname = songname;
+        this.mode = mode;
 
         Pane game = new Pane();
         Path gameScreenPath = Paths.get(currentPath.toString(), "Image", "basicBg.png");
@@ -116,9 +122,14 @@ public class Play  {
         scoreLabel.setTranslateY(100);
         scoreLabel.setScaleX(3);
         scoreLabel.setScaleY(3);
-        //scoreLabel.setFont(new Font("Arial",30));
         scoreLabel.setTextFill(Color.web("#FFD4F4"));
-        
+
+        highLabel.setTranslateX(85);
+        highLabel.setTranslateY(450);
+        highLabel.setScaleX(3);
+        highLabel.setScaleY(3);
+        highLabel.setTextFill(Color.web("#FFD4F4"));
+
         //ballList = new ArrayList<Ball>();
         blueList = new ArrayList<Ball>();
         greenList = new ArrayList<Ball>();
@@ -159,58 +170,71 @@ public class Play  {
         //nat's path
         //connect1 = DriverManager.getConnection("jdbc:ucanaccess:///Users/macintoshhd/Desktop/crazyTap/tapNodes.accdb");
         //fon's path
-        connect1 = DriverManager.getConnection("jdbc:ucanaccess://C://Users//Mac//Desktop//crazyTap//tapNodes.accdb");
+        //connect1 = DriverManager.getConnection("jdbc:ucanaccess://C://Users//Mac//Desktop//crazyTap//tapNodes.accdb");
         //kk's path
-        //connect1 = DriverManager.getConnection("jdbc:ucanaccess://C://Users//Macbook Pro//Documents/tapNodes.accdb");
+        connect1 = DriverManager.getConnection("jdbc:ucanaccess://C://Users//Macbook Pro//Documents//GitHub//crazyTap//tapNodes.accdb");
         stat1 = connect1.createStatement();
         String selectcloserE = "select time, col1, col2, col3,col4 from closer1";
         String selectcloserM = "select time, col1, col2, col3,col4 from closer2";
         //String selecteasycloser = "select "
-        if(songname.equals("Closer")){
-            if(mode.equals("easy")){
+        if (songname.equals("Closer")) {
+            if (mode.equals("easy")) {
                 rs = stat1.executeQuery(selectcloserE);
+                highScore = hScore.getCloser1();
+                highLabel.setText("" + highScore);
+            } else if (mode.equals("medium")) {
+                rs = stat1.executeQuery(selectcloserE);
+                highScore = hScore.getCloser2();
+                highLabel.setText("" + highScore);
+            } else {
+                rs = stat1.executeQuery(selectcloserE);
+                highScore = hScore.getCloser3();
+                highLabel.setText("" + highScore);
             }
-            else if(mode.equals("medium")){
+        } else if (songname.equals("Roses")) {
+            if (mode.equals("easy")) {
                 rs = stat1.executeQuery(selectcloserE);
+                highScore = hScore.getRoses1();
+                highLabel.setText("" + highScore);
+            } else if (mode.equals("medium")) {
+                rs = stat1.executeQuery(selectcloserE);
+                highScore = hScore.getRoses2();
+                highLabel.setText("" + highScore);
+            } else {
+                rs = stat1.executeQuery(selectcloserE);
+                highScore = hScore.getRoses3();
+                highLabel.setText("" + highScore);
             }
-            else{
+        } else if (songname.equals("Summer")) {
+            if (mode.equals("easy")) {
                 rs = stat1.executeQuery(selectcloserE);
+                highScore = hScore.getSummer1();
+                highLabel.setText("" + highScore);
+            } else if (mode.equals("medium")) {
+                rs = stat1.executeQuery(selectcloserE);
+                highScore = hScore.getSummer2();
+                highLabel.setText("" + highScore);
+            } else {
+                rs = stat1.executeQuery(selectcloserE);
+                highScore = hScore.getSummer3();
+                highLabel.setText("" + highScore);
+            }
+        } else if (songname.equals("This is")) {
+            if (mode.equals("easy")) {
+                rs = stat1.executeQuery(selectcloserE);
+                highScore = hScore.getThisIs1();
+                highLabel.setText("" + highScore);
+            } else if (mode.equals("medium")) {
+                rs = stat1.executeQuery(selectcloserE);
+                highScore = hScore.getThisIs2();
+                highLabel.setText("" + highScore);
+            } else {
+                rs = stat1.executeQuery(selectcloserE);
+                highScore = hScore.getThisIs3();
+                highLabel.setText("" + highScore);
             }
         }
-        else if(songname.equals("Roses")){
-            if(mode.equals("easy")){
-                rs = stat1.executeQuery(selectcloserE);
-            }
-            else if(mode.equals("medium")){
-                rs = stat1.executeQuery(selectcloserE);
-            }
-            else{
-                rs = stat1.executeQuery(selectcloserE);
-            }
-        }
-        else if(songname.equals("Summer")){
-            if(mode.equals("easy")){
-                rs = stat1.executeQuery(selectcloserE);
-            }
-            else if(mode.equals("medium")){
-                rs = stat1.executeQuery(selectcloserE);
-            }
-            else{
-                rs = stat1.executeQuery(selectcloserE);
-            }
-        }
-        else if(songname.equals("This is")){
-            if(mode.equals("easy")){
-                rs = stat1.executeQuery(selectcloserE);
-            }
-            else if(mode.equals("medium")){
-                rs = stat1.executeQuery(selectcloserE);
-            }
-            else{
-                rs = stat1.executeQuery(selectcloserE);
-            }
-        }
-        
+
         while (rs.next()) {
             int timey = rs.getInt(1);
             int pos1 = rs.getInt(2);
@@ -238,25 +262,37 @@ public class Play  {
         int comp = tryTime.get(0);
         System.out.println("comp = " + comp);
         int index = 0;
-        
-        summer.currentTimeProperty().addListener(new ChangeListener<Duration>(){
+
+        summer.currentTimeProperty().addListener(new ChangeListener<Duration>() {
             @Override
-            public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue){
-                for(Ball ball:blueList){
+            public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
+                for (Ball ball : blueList) {
                     ball.setUpdatedY(ball.iv.getTranslateY());
                 }
-                for(Ball ball:greenList){
+                for (Ball ball : greenList) {
                     ball.setUpdatedY(ball.iv.getTranslateY());
                 }
-                for(Ball ball:pinkList){
+                for (Ball ball : pinkList) {
                     ball.setUpdatedY(ball.iv.getTranslateY());
                 }
-                for(Ball ball:purpleList){
+                for (Ball ball : purpleList) {
                     ball.setUpdatedY(ball.iv.getTranslateY());
                 }
-                    
+                if ((int) newValue.toMillis() == (int) summer.getMedia().getDuration().toMillis()) {
+                    Pane pane3;
+                    try {
+                        hScore.rewrite(highScore, songname, mode);
+                        pane3 = new ShowScore().showScore(score, highScore);
+                        Main.scene6 = new Scene(pane3,800,600);
+                        Main.primaryStage.setScene(Main.scene6);
+                        Main.primaryStage.show();
+                    } catch (IOException ex) {
+                        Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
             }
         });
+
         //System.out.println("Summer du ="+(int)summer.getTotalDuration().toSeconds());
         while (summerTime.greaterThan(time)) {
             if ((int) time.toMillis() == comp) {
@@ -269,10 +305,6 @@ public class Play  {
                     tt.setDelay(Duration.millis((int) time.toMillis()));
                     tt.play();
 
-//                    //ton code
-//                    temp.setUpdatedY((int)iv.getTranslateY());
-//                    System.out.println("blue pos = "+(int)iv.getTranslateY());
-//                    
                     transList.add(tt);
                     blueList.add(temp);
 
@@ -285,10 +317,7 @@ public class Play  {
                     tt.setToY(700);
                     tt.setDelay(Duration.millis((int) time.toMillis()));
                     tt.play();
-                    
-                    
 
-                    
                     transList.add(tt);
                     greenList.add(temp);
                     System.out.println("2");
@@ -300,7 +329,7 @@ public class Play  {
                     tt.setToY(700);
                     tt.setDelay(Duration.millis((int) time.toMillis()));
                     tt.play();
-                    
+
                     transList.add(tt);
                     pinkList.add(temp);
                     System.out.println("3");
@@ -323,7 +352,6 @@ public class Play  {
 
             textBox.setOnKeyPressed(new TextBoxHandler());
 
-
             textBox.setOnKeyReleased(new EventHandler<KeyEvent>() {
                 @Override
                 public void handle(KeyEvent ke) {
@@ -337,7 +365,6 @@ public class Play  {
                     } else if (ke.getText().equals("k")) {
                         ivpurple.setImage(Imgpurple1);
                     }
-                    //System.out.println("Key Released: " + ke.getText());
 
                 }
 
@@ -347,12 +374,15 @@ public class Play  {
             //System.out.println("time : " + (int) time.toMillis());
         }
 
-        pause.setOnMouseExited(event -> pause.setImage(pause1Img));
-        pause.setOnMouseEntered(event -> pause.setImage(pause2Img));
-        pause.setOnMouseClicked(event -> {
+        pause.setOnMouseExited(event
+                -> pause.setImage(pause1Img));
+        pause.setOnMouseEntered(event
+                -> pause.setImage(pause2Img));
+        pause.setOnMouseClicked(event
+                -> {
             try {
                 summer.pause();
-                Main.scene5 = new Scene(new Pause().getPause(songname,mode));
+                Main.scene5 = new Scene(new Pause().getPause(songname, mode));
                 Main.primaryStage.setScene(Main.scene5);
                 Main.primaryStage.show();
             } catch (IOException ex) {
@@ -361,6 +391,7 @@ public class Play  {
 
         });
         new Thread(new Runnable() {
+
             public void run() {
                 try {
                     Thread.sleep(820);
@@ -378,7 +409,7 @@ public class Play  {
         for (int i = 0; i < blueList.size(); i++) {
             game.getChildren().add(blueList.get(i).getBall());
             System.out.println("getbb");
-            
+
         }
         for (int i = 0; i < greenList.size(); i++) {
             game.getChildren().add(greenList.get(i).getBall());
@@ -392,8 +423,8 @@ public class Play  {
             game.getChildren().add(purpleList.get(i).getBall());
             System.out.println("getppb");
         }
-        
-        game.getChildren().addAll(ivblue, ivgreen, ivpink, ivpurple,scoreLabel);
+
+        game.getChildren().addAll(ivblue, ivgreen, ivpink, ivpurple, scoreLabel, highLabel);
         return game;
     }
 
@@ -402,43 +433,47 @@ public class Play  {
         public void handle(KeyEvent ke) {
             if (ke.getText().equals("s")) {
                 ivblue.setImage(Imgblue2);
-                for(Ball ball: blueList) {
+                for (Ball ball : blueList) {
                     System.out.println(ball.getY());
-                    if(ball.getY()>=490&&ball.getY()<599) {
-                        score+=5;
-                        System.out.println("blue hit "+score);
+                    if (ball.getY() >= 490 && ball.getY() < 599) {
+                        score += 5;
+                        System.out.println("blue hit " + score);
                     }
                 }
 
             } else if (ke.getText().equals("d")) {
                 ivgreen.setImage(Imggreen2);
-                for(Ball ball: greenList) {
+                for (Ball ball : greenList) {
                     System.out.println(ball.getY());
-                    if(ball.getY()>=490&&ball.getY()<599) {
-                        score+=5;
-                        System.out.println("green hit "+score);
+                    if (ball.getY() >= 490 && ball.getY() < 599) {
+                        score += 5;
+                        System.out.println("green hit " + score);
                     }
                 }
             } else if (ke.getText().equals("j")) {
                 ivpink.setImage(Imgpink2);
-                for(Ball ball: pinkList) {
+                for (Ball ball : pinkList) {
                     System.out.println(ball.getY());
-                    if(ball.getY()>=490&&ball.getY()<599) {
-                        score+=5;
-                        System.out.println("pink hit "+score);
+                    if (ball.getY() >= 490 && ball.getY() < 599) {
+                        score += 5;
+                        System.out.println("pink hit " + score);
                     }
                 }
             } else if (ke.getText().equals("k")) {
                 ivpurple.setImage(Imgpurple2);
-                for(Ball ball: purpleList) {
+                for (Ball ball : purpleList) {
                     System.out.println(ball.getY());
-                    if(ball.getY()>=490&&ball.getY()<599) {
-                        score+=5;
-                        System.out.println("purple hit "+score);
+                    if (ball.getY() >= 490 && ball.getY() < 599) {
+                        score += 5;
+                        System.out.println("purple hit " + score);
                     }
                 }
             }
-            scoreLabel.setText(score+"");
+            scoreLabel.setText(score + "");
+            if (highScore < score) {
+                highScore = score;
+                highLabel.setText("" + highScore);
+            }
             //System.out.println("Key Pressed: " + ke.getText());
         }
     }

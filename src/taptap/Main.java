@@ -21,7 +21,7 @@ public class Main extends Application {
 
     static Pane root;
     
-    static Scene scene1, scene2,scene3,scene4,scene5, gameScene;  
+    static Scene scene1, scene2,scene3,scene4,scene5,scene6, gameScene;  
     //scene1 = main,scene2 = howto,scene3 = songLibrary, scene4 = mode , scene5 = pause
     static Stage primaryStage;
     
