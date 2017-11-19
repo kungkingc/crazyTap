@@ -78,8 +78,9 @@ public class Play  {
     //MyTime time = new MyTime();
     int comp;
     Label scoreLabel = new Label("0");
+    Label highLabel;
 
-    public Pane gameApp(String songname) throws IOException, SQLException, ClassNotFoundException {
+    public Pane gameApp(String songname,String mode) throws IOException, SQLException, ClassNotFoundException {
         //boolean state = false;
 
         Pane game = new Pane();
@@ -166,10 +167,48 @@ public class Play  {
         String selectcloserM = "select time, col1, col2, col3,col4 from closer2";
         //String selecteasycloser = "select "
         if(songname.equals("Closer")){
-            rs = stat1.executeQuery(selectcloserE);
+            if(mode.equals("easy")){
+                rs = stat1.executeQuery(selectcloserE);
+            }
+            else if(mode.equals("medium")){
+                rs = stat1.executeQuery(selectcloserE);
+            }
+            else{
+                rs = stat1.executeQuery(selectcloserE);
+            }
         }
-        else{
-            rs = stat1.executeQuery(selectcloserM);
+        else if(songname.equals("Roses")){
+            if(mode.equals("easy")){
+                rs = stat1.executeQuery(selectcloserE);
+            }
+            else if(mode.equals("medium")){
+                rs = stat1.executeQuery(selectcloserE);
+            }
+            else{
+                rs = stat1.executeQuery(selectcloserE);
+            }
+        }
+        else if(songname.equals("Summer")){
+            if(mode.equals("easy")){
+                rs = stat1.executeQuery(selectcloserE);
+            }
+            else if(mode.equals("medium")){
+                rs = stat1.executeQuery(selectcloserE);
+            }
+            else{
+                rs = stat1.executeQuery(selectcloserE);
+            }
+        }
+        else if(songname.equals("This is")){
+            if(mode.equals("easy")){
+                rs = stat1.executeQuery(selectcloserE);
+            }
+            else if(mode.equals("medium")){
+                rs = stat1.executeQuery(selectcloserE);
+            }
+            else{
+                rs = stat1.executeQuery(selectcloserE);
+            }
         }
         
         while (rs.next()) {
@@ -289,9 +328,9 @@ public class Play  {
                 @Override
                 public void handle(KeyEvent ke) {
 
-                    if (ke.getText().equals("d")) {
+                    if (ke.getText().equals("s")) {
                         ivblue.setImage(Imgblue1);
-                    } else if (ke.getText().equals("f")) {
+                    } else if (ke.getText().equals("d")) {
                         ivgreen.setImage(Imggreen1);
                     } else if (ke.getText().equals("j")) {
                         ivpink.setImage(Imgpink1);
@@ -313,7 +352,7 @@ public class Play  {
         pause.setOnMouseClicked(event -> {
             try {
                 summer.pause();
-                Main.scene5 = new Scene(new Pause().getPause(songname));
+                Main.scene5 = new Scene(new Pause().getPause(songname,mode));
                 Main.primaryStage.setScene(Main.scene5);
                 Main.primaryStage.show();
             } catch (IOException ex) {
@@ -361,7 +400,7 @@ public class Play  {
     private class TextBoxHandler implements EventHandler<KeyEvent> {
 
         public void handle(KeyEvent ke) {
-            if (ke.getText().equals("d")) {
+            if (ke.getText().equals("s")) {
                 ivblue.setImage(Imgblue2);
                 for(Ball ball: blueList) {
                     System.out.println(ball.getY());
@@ -371,7 +410,7 @@ public class Play  {
                     }
                 }
 
-            } else if (ke.getText().equals("f")) {
+            } else if (ke.getText().equals("d")) {
                 ivgreen.setImage(Imggreen2);
                 for(Ball ball: greenList) {
                     System.out.println(ball.getY());

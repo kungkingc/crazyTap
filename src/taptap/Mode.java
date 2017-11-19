@@ -78,7 +78,7 @@ public class Mode {
         beginner.setOnMouseEntered(event-> beginner.setImage(Beginner2Img));
         beginner.setOnMouseClicked(event -> {
             try {
-                Main.gameScene = new Scene(new Play().gameApp(songname),800,600);
+                Main.gameScene = new Scene(new Play().gameApp(songname,"easy"),800,600);
                 Main.primaryStage.setScene(Main.gameScene);
                 Main.primaryStage.show();
             } catch (IOException ex) {
@@ -94,7 +94,7 @@ public class Mode {
         intermediate.setOnMouseEntered(event-> intermediate.setImage(intermediate2Img));
         intermediate.setOnMouseClicked(event -> {
             try {
-                Main.gameScene = new Scene(new Play().gameApp(songname),800,600);
+                Main.gameScene = new Scene(new Play().gameApp(songname,"medium"),800,600);
                 Main.primaryStage.setScene(Main.gameScene);
                 Main.primaryStage.show();
             } catch (IOException ex) {
@@ -110,7 +110,7 @@ public class Mode {
         advance.setOnMouseEntered(event-> advance.setImage(Advanced2Img));
         advance.setOnMouseClicked(event -> {
             try {
-                Main.gameScene = new Scene(new Play().gameApp(songname),800,600);
+                Main.gameScene = new Scene(new Play().gameApp(songname,"hard"),800,600);
                 Main.primaryStage.setScene(Main.gameScene);
                 Main.primaryStage.show();
             } catch (IOException ex) {

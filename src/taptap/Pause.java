@@ -26,7 +26,7 @@ import static taptap.Main.currentPath;
  * @author Mac
  */
 public class Pause {
-    public Pane getPause(String songname) throws IOException 
+    public Pane getPause(String songname,String mode) throws IOException 
     {
         Pane game = new Pane();
         
@@ -63,7 +63,7 @@ public class Pause {
         restart.setOnMouseEntered(event-> restart.setImage(restart2Img));
         restart.setOnMouseClicked(event->{
             try {
-                Main.gameScene = new Scene(new Play().gameApp(songname),800,600);
+                Main.gameScene = new Scene(new Play().gameApp(songname,mode),800,600);
                 Main.primaryStage.setScene(Main.gameScene);
                 Main.primaryStage.show();
             } catch (IOException ex) {
