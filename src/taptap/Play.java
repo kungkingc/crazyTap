@@ -41,15 +41,14 @@ public class Play {
     //Score score = new Score();
     int score = 0;
 
-    Image Imgblue1;
-    Image Imgblue2;
-    Image Imggreen1;
-    Image Imggreen2;
-    Image Imgpink1;
-    Image Imgpink2;
-    Image Imgpurple1;
-    Image Imgpurple2;
-
+//    Image Imgblue1;
+//    Image Imgblue2;
+//    Image Imggreen1;
+//    Image Imggreen2;
+//    Image Imgpink1;
+//    Image Imgpink2;
+//    Image Imgpurple1;
+//    Image Imgpurple2;
     ImageView bg;
     ImageView pause;
     ImageView ivblue;
@@ -83,36 +82,54 @@ public class Play {
     String songname;
     String mode;
 
+    MyButton blue1;
+    MyButton blue2;
+    MyButton green1;
+    MyButton green2;
+    MyButton pink1;
+    MyButton pink2;
+    MyButton purple1;
+    MyButton purple2;
+
     public Pane gameApp(String songname, String mode) throws IOException, SQLException, ClassNotFoundException {
         //boolean state = false;
         highScore hScore = new highScore();
         this.songname = songname;
         this.mode = mode;
 
+        blue1 = new MyButton("blue1");
+        blue2 = new MyButton("blue2");
+        green1 = new MyButton("green1");
+        green2 = new MyButton("green2");
+        pink1 = new MyButton("pink1");
+        pink2 = new MyButton("pink2");
+        purple1 = new MyButton("purple1");
+        purple2 = new MyButton("purple2");
+
         Pane game = new Pane();
         Path gameScreenPath = Paths.get(currentPath.toString(), "Image", "basicBg.png");
         Path pause1Path = Paths.get(currentPath.toString(), "Image", "pause1.png");
         Path pause2Path = Paths.get(currentPath.toString(), "Image", "pause2.png");
-        Path blue1Path = Paths.get(currentPath.toString(), "Image", "blue1.png");
-        Path blue2Path = Paths.get(currentPath.toString(), "Image", "blue2.png");
-        Path green1Path = Paths.get(currentPath.toString(), "Image", "green1.png");
-        Path green2Path = Paths.get(currentPath.toString(), "Image", "green2.png");
-        Path pink1Path = Paths.get(currentPath.toString(), "Image", "pink1.png");
-        Path pink2Path = Paths.get(currentPath.toString(), "Image", "pink2.png");
-        Path purple1Path = Paths.get(currentPath.toString(), "Image", "purple1.png");
-        Path purple2Path = Paths.get(currentPath.toString(), "Image", "purple2.png");
+//        Path blue1Path = Paths.get(currentPath.toString(), "Image", "blue1.png");
+//        Path blue2Path = Paths.get(currentPath.toString(), "Image", "blue2.png");
+//        Path green1Path = Paths.get(currentPath.toString(), "Image", "green1.png");
+//        Path green2Path = Paths.get(currentPath.toString(), "Image", "green2.png");
+//        Path pink1Path = Paths.get(currentPath.toString(), "Image", "pink1.png");
+//        Path pink2Path = Paths.get(currentPath.toString(), "Image", "pink2.png");
+//        Path purple1Path = Paths.get(currentPath.toString(), "Image", "purple1.png");
+//        Path purple2Path = Paths.get(currentPath.toString(), "Image", "purple2.png");
 
         InputStream input = Files.newInputStream(Paths.get(gameScreenPath.toString()));
         InputStream pause1 = Files.newInputStream(Paths.get(pause1Path.toString()));
         InputStream pause2 = Files.newInputStream(Paths.get(pause2Path.toString()));
-        InputStream blue1 = Files.newInputStream(Paths.get(blue1Path.toString()));
-        InputStream blue2 = Files.newInputStream(Paths.get(blue2Path.toString()));
-        InputStream green1 = Files.newInputStream(Paths.get(green1Path.toString()));
-        InputStream green2 = Files.newInputStream(Paths.get(green2Path.toString()));
-        InputStream pink1 = Files.newInputStream(Paths.get(pink1Path.toString()));
-        InputStream pink2 = Files.newInputStream(Paths.get(pink2Path.toString()));
-        InputStream purple1 = Files.newInputStream(Paths.get(purple1Path.toString()));
-        InputStream purple2 = Files.newInputStream(Paths.get(purple2Path.toString()));
+//        InputStream blue1 = Files.newInputStream(Paths.get(blue1Path.toString()));
+//        InputStream blue2 = Files.newInputStream(Paths.get(blue2Path.toString()));
+//        InputStream green1 = Files.newInputStream(Paths.get(green1Path.toString()));
+//        InputStream green2 = Files.newInputStream(Paths.get(green2Path.toString()));
+//        InputStream pink1 = Files.newInputStream(Paths.get(pink1Path.toString()));
+//        InputStream pink2 = Files.newInputStream(Paths.get(pink2Path.toString()));
+//        InputStream purple1 = Files.newInputStream(Paths.get(purple1Path.toString()));
+//        InputStream purple2 = Files.newInputStream(Paths.get(purple2Path.toString()));
 
         Image BgImg = new Image(input);
         Image pause1Img = new Image(pause1);
@@ -137,21 +154,25 @@ public class Play {
         purpleList = new ArrayList<Ball>();
         transList = new ArrayList<TranslateTransition>();
 
-        Imgblue1 = new Image(blue1);
-        Imgblue2 = new Image(blue2);
-        Imggreen1 = new Image(green1);
-        Imggreen2 = new Image(green2);
-        Imgpink1 = new Image(pink1);
-        Imgpink2 = new Image(pink2);
-        Imgpurple1 = new Image(purple1);
-        Imgpurple2 = new Image(purple2);
-
+//        Imgblue1 = new Image(blue1);
+//        Imgblue2 = new Image(blue2);
+//        Imggreen1 = new Image(green1);
+//        Imggreen2 = new Image(green2);
+//        Imgpink1 = new Image(pink1);
+//        Imgpink2 = new Image(pink2);
+//        Imgpurple1 = new Image(purple1);
+//        Imgpurple2 = new Image(purple2);
         bg = new ImageView(BgImg);
         pause = new ImageView(pause1Img);
-        ivblue = new ImageView(Imgblue1);
-        ivgreen = new ImageView(Imggreen1);
-        ivpink = new ImageView(Imgpink1);
-        ivpurple = new ImageView(Imgpurple1);
+//        ivblue = new ImageView(Imgblue1);
+//        ivgreen = new ImageView(Imggreen1);
+//        ivpink = new ImageView(Imgpink1);
+//        ivpurple = new ImageView(Imgpurple1);
+
+        ivblue = blue1.getiv();
+        ivgreen = green1.getiv();
+        ivpink = pink1.getiv();
+        ivpurple = purple1.getiv();
 
         pause.setX(680);
         pause.setY(30);
@@ -170,70 +191,46 @@ public class Play {
         //nat's path
         //connect1 = DriverManager.getConnection("jdbc:ucanaccess:///Users/macintoshhd/Desktop/crazyTap/tapNodes.accdb");
         //fon's path
-        //connect1 = DriverManager.getConnection("jdbc:ucanaccess://C://Users//Mac//Desktop//crazyTap//tapNodes.accdb");
+        connect1 = DriverManager.getConnection("jdbc:ucanaccess://C://Users//Mac//Desktop//crazyTap//tapNodes.accdb");
         //kk's path
-        connect1 = DriverManager.getConnection("jdbc:ucanaccess://C://Users//Macbook Pro//Documents//GitHub//crazyTap//tapNodes.accdb");
+        //connect1 = DriverManager.getConnection("jdbc:ucanaccess://C://Users//Macbook Pro//Documents//GitHub//crazyTap//tapNodes.accdb");
         stat1 = connect1.createStatement();
-        String selectcloserE = "select time, col1, col2, col3,col4 from closer1";
-        String selectcloserM = "select time, col1, col2, col3,col4 from closer2";
-        //String selecteasycloser = "select "
+
         if (songname.equals("Closer")) {
             if (mode.equals("easy")) {
-                rs = stat1.executeQuery(selectcloserE);
                 highScore = hScore.getCloser1();
-                highLabel.setText("" + highScore);
             } else if (mode.equals("medium")) {
-                rs = stat1.executeQuery(selectcloserE);
                 highScore = hScore.getCloser2();
-                highLabel.setText("" + highScore);
             } else {
-                rs = stat1.executeQuery(selectcloserE);
                 highScore = hScore.getCloser3();
-                highLabel.setText("" + highScore);
             }
         } else if (songname.equals("Roses")) {
             if (mode.equals("easy")) {
-                rs = stat1.executeQuery(selectcloserE);
                 highScore = hScore.getRoses1();
-                highLabel.setText("" + highScore);
             } else if (mode.equals("medium")) {
-                rs = stat1.executeQuery(selectcloserE);
                 highScore = hScore.getRoses2();
-                highLabel.setText("" + highScore);
             } else {
-                rs = stat1.executeQuery(selectcloserE);
                 highScore = hScore.getRoses3();
-                highLabel.setText("" + highScore);
             }
         } else if (songname.equals("Summer")) {
             if (mode.equals("easy")) {
-                rs = stat1.executeQuery(selectcloserE);
                 highScore = hScore.getSummer1();
-                highLabel.setText("" + highScore);
             } else if (mode.equals("medium")) {
-                rs = stat1.executeQuery(selectcloserE);
                 highScore = hScore.getSummer2();
-                highLabel.setText("" + highScore);
             } else {
-                rs = stat1.executeQuery(selectcloserE);
                 highScore = hScore.getSummer3();
-                highLabel.setText("" + highScore);
             }
         } else if (songname.equals("This is")) {
             if (mode.equals("easy")) {
-                rs = stat1.executeQuery(selectcloserE);
                 highScore = hScore.getThisIs1();
-                highLabel.setText("" + highScore);
             } else if (mode.equals("medium")) {
-                rs = stat1.executeQuery(selectcloserE);
                 highScore = hScore.getThisIs2();
-                highLabel.setText("" + highScore);
             } else {
-                rs = stat1.executeQuery(selectcloserE);
                 highScore = hScore.getThisIs3();
-                highLabel.setText("" + highScore);
             }
         }
+        highLabel.setText("" + highScore);
+        rs = stat1.executeQuery(selectAccess(mode, songname));
 
         while (rs.next()) {
             int timey = rs.getInt(1);
@@ -257,7 +254,7 @@ public class Play {
         final TextField textBox = new TextField();
         textBox.setPromptText("Write here");
 
-        Duration summerTime = Duration.millis(5720);
+        Duration summerTime = Duration.millis(15000);
 
         int comp = tryTime.get(0);
         System.out.println("comp = " + comp);
@@ -283,7 +280,7 @@ public class Play {
                     try {
                         hScore.rewrite(highScore, songname, mode);
                         pane3 = new ShowScore().showScore(score, highScore);
-                        Main.scene6 = new Scene(pane3,800,600);
+                        Main.scene6 = new Scene(pane3, 800, 600);
                         Main.primaryStage.setScene(Main.scene6);
                         Main.primaryStage.show();
                     } catch (IOException ex) {
@@ -357,13 +354,13 @@ public class Play {
                 public void handle(KeyEvent ke) {
 
                     if (ke.getText().equals("s")) {
-                        ivblue.setImage(Imgblue1);
+                        ivblue.setImage(blue1.getImage());
                     } else if (ke.getText().equals("d")) {
-                        ivgreen.setImage(Imggreen1);
+                        ivgreen.setImage(green1.getImage());
                     } else if (ke.getText().equals("j")) {
-                        ivpink.setImage(Imgpink1);
+                        ivpink.setImage(pink1.getImage());
                     } else if (ke.getText().equals("k")) {
-                        ivpurple.setImage(Imgpurple1);
+                        ivpurple.setImage(purple1.getImage());
                     }
 
                 }
@@ -428,11 +425,66 @@ public class Play {
         return game;
     }
 
+    private String selectAccess(String mode, String songname) throws SQLException {
+
+        String select = "select time, col1, col2, col3,col4 ";
+        //String selectcloserM = "select time, col1, col2, col3,col4 from closer2";
+        //String selecteasycloser = "select "
+        if (songname.equals("Closer")) {
+            if (mode.equals("easy")) {
+
+                select += "from closer1";
+                highLabel.setText("" + highScore);
+            } else if (mode.equals("medium")) {
+                select += "from closer2";
+                highLabel.setText("" + highScore);
+            } else {
+                select += "from closer3";
+                highLabel.setText("" + highScore);
+            }
+        } else if (songname.equals("Roses")) {
+            if (mode.equals("easy")) {
+                select += "from Roses1";
+                highLabel.setText("" + highScore);
+            } else if (mode.equals("medium")) {
+                select += "from Roses2";
+                highLabel.setText("" + highScore);
+            } else {
+                select += "from Roses3";
+                highLabel.setText("" + highScore);
+            }
+        } else if (songname.equals("Summer")) {
+            if (mode.equals("easy")) {
+                select += "from Summer1";
+                highLabel.setText("" + highScore);
+            } else if (mode.equals("medium")) {
+                select += "from Summer2";
+                highLabel.setText("" + highScore);
+            } else {
+                select += "from Summer3";
+                highLabel.setText("" + highScore);
+            }
+        } else if (songname.equals("This is")) {
+            if (mode.equals("easy")) {
+                select += "from ThisIs1";
+                highLabel.setText("" + highScore);
+            } else if (mode.equals("medium")) {
+                select += "from ThisIs2";
+                highLabel.setText("" + highScore);
+            } else {
+                select += "from ThisIs3";
+                highLabel.setText("" + highScore);
+            }
+        }
+
+        return select;
+    }
+
     private class TextBoxHandler implements EventHandler<KeyEvent> {
 
         public void handle(KeyEvent ke) {
             if (ke.getText().equals("s")) {
-                ivblue.setImage(Imgblue2);
+                ivblue.setImage(blue2.getImage());
                 for (Ball ball : blueList) {
                     System.out.println(ball.getY());
                     if (ball.getY() >= 490 && ball.getY() < 599) {
@@ -442,7 +494,7 @@ public class Play {
                 }
 
             } else if (ke.getText().equals("d")) {
-                ivgreen.setImage(Imggreen2);
+                ivgreen.setImage(green2.getImage());
                 for (Ball ball : greenList) {
                     System.out.println(ball.getY());
                     if (ball.getY() >= 490 && ball.getY() < 599) {
@@ -451,7 +503,7 @@ public class Play {
                     }
                 }
             } else if (ke.getText().equals("j")) {
-                ivpink.setImage(Imgpink2);
+                ivpink.setImage(pink2.getImage());
                 for (Ball ball : pinkList) {
                     System.out.println(ball.getY());
                     if (ball.getY() >= 490 && ball.getY() < 599) {
@@ -460,7 +512,7 @@ public class Play {
                     }
                 }
             } else if (ke.getText().equals("k")) {
-                ivpurple.setImage(Imgpurple2);
+                ivpurple.setImage(purple2.getImage());
                 for (Ball ball : purpleList) {
                     System.out.println(ball.getY());
                     if (ball.getY() >= 490 && ball.getY() < 599) {
