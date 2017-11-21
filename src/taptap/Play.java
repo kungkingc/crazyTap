@@ -196,8 +196,6 @@ public class Play {
             //System.out.println(timey + " " + pos1+ " " + pos2+ " " +pos3+ " " +pos4);
         }
 
-        //MediaPlayer closer = new Song("Closer").getPlayer();
-        //closer.play();
         MediaPlayer summer = new Song(songname).getPlayer();
 
         final TextField textBox = new TextField();
@@ -242,7 +240,7 @@ public class Play {
             }
         });
 
-        //System.out.println("Summer du ="+(int)summer.getTotalDuration().toSeconds());
+
         while (summerTime.greaterThan(time)) {
             if ((int) time.toMillis() == comp) {
                 if (arrayPos1.get(index) == 1) {

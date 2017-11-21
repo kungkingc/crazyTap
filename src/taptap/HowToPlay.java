@@ -13,13 +13,18 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.MediaPlayer;
 import static taptap.Main.currentPath;
 import static taptap.Main.gameScene;
 
 public class HowToPlay{
 
+    MediaPlayer summer;
     public Pane getPane2() throws IOException{
         Pane p2 = new Pane();
+        
+        summer = new Song("Summer").getPlayer();
+        summer.play();
         Path PagePath = Paths.get(Main.currentPath.toString(), "Image", "howToPlay.jpg");
         Path backPath1 = Paths.get(currentPath.toString(), "Image", "greenBack1.png");
         Path backPath2 = Paths.get(currentPath.toString(), "Image", "greenBack2.png");
@@ -45,6 +50,7 @@ public class HowToPlay{
         back.setOnMouseEntered(event-> back.setImage(back2Img));
         back.setOnMouseClicked(event->{
             try {
+                summer.pause();
                 Main.scene1 = new Scene(new Main().createContent());
                 Main.primaryStage.setScene(Main.scene1);
                 Main.primaryStage.show();

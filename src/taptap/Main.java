@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -35,12 +36,16 @@ public class Main extends Application {
     Path exit1Path = Paths.get(currentPath.toString(), "Image", "exit1.png");
     Path exit2Path = Paths.get(currentPath.toString(), "Image", "exit2.png");
 
+    MediaPlayer song;
     public static Scene getGameScene() {
         return gameScene;
     }
 
     public Parent createContent() throws IOException {
+        
+        song = new Song("mainSong").getPlayer();
 
+        
         root = new Pane();
         root.setPrefSize(800, 600);
         root.setFocusTraversable(true);
@@ -76,11 +81,13 @@ public class Main extends Application {
         ivExit.setX(320);
         ivExit.setY(510);
 
+        song.play();
         ivPlay.setOnMouseExited(event -> ivPlay.setImage(ImgPlay1));
         ivPlay.setOnMouseEntered(event -> ivPlay.setImage(ImgPlay2));
         ivPlay.setOnMouseClicked(event -> {
             Pane pane3;
             try {
+                song.pause();
                 pane3 = new SongLibrary().getSong();
                 scene3 = new Scene(pane3);
                 primaryStage.setScene(scene3);
@@ -100,6 +107,7 @@ public class Main extends Application {
         ivHowto.setOnMouseClicked(event -> {
             Pane pane2;
             try {
+                song.pause();
                 pane2 = new HowToPlay().getPane2();
                 scene2 = new Scene(pane2);
                 primaryStage.setScene(scene2);

@@ -21,35 +21,34 @@ import static taptap.Main.currentPath;
  */
 public class Song {
 
-    
     File musicFile;
     Media sound;
     MediaPlayer player;
 
     public Song(String music) throws IOException {
-      if(music.equals("Closer")) {
-        musicFile = new File("Songs"+File.separator+"Closer.mp3");
-      } 
-      else if(music.equals("Summer")) {
-        musicFile = new File("Songs"+File.separator+"Summer.mp3");
-      } 
-      else if(music.equals("This is")) {
-        musicFile = new File("Songs"+File.separator+"This is.mp3");
-      } 
-      else if(music.equals("Roses")) {
-        musicFile = new File("Songs"+File.separator+"Roses.mp3");
-      } 
-      
-      sound = new Media(musicFile.toURI().toString());
-      player = new MediaPlayer(sound);
-      
+        if (music.equals("Closer")) {
+            musicFile = new File("Songs" + File.separator + "Closer.mp3");
+
+        } else if (music.equals("Roses")) {
+            musicFile = new File("Songs" + File.separator + "Roses.mp3");
+        } else if (music.equals("mainSong")) {
+            musicFile = new File("Songs" + File.separator + "mainSong.mp3");
+        
+        } else if (music.equals("Summer")) {
+            musicFile = new File("Songs" + File.separator + "Summer.mp3");
+        }
+
+        sound = new Media(musicFile.toURI().toString());
+        player = new MediaPlayer(sound);
+
     }
-    public Media getMedia(){
+
+    public Media getMedia() {
         return sound;
     }
 
     public MediaPlayer getPlayer() {
         return player;
     }
-   
+
 }
