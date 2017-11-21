@@ -204,9 +204,9 @@ public class Play {
         textBox.setPromptText("Write here");
 
         int dutime=0;
-        if(songname.equals("Closer")) dutime = 93370;
-        else if(songname.equals("Roses")) dutime = 10000;
-        Duration summerTime = Duration.millis(10000);
+        if(songname.equals("Closer")) dutime = 91000;
+        else if(songname.equals("Roses")) dutime = 105010;
+        Duration summerTime = Duration.millis(dutime);
 
         int comp = tryTime.get(0);
         System.out.println("comp = " + comp);
